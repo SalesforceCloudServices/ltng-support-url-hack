@@ -1,0 +1,11 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "OpportunitySettings__c",
+                "referenceId": "OpportunitySettings__cRef1"
+            },
+            "OpportunityCustomURL__c": "https://www.dnb.com/duns-number/lookup.html"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef1"
+            },
+            "FirstName": "Bob",
+            "LastName": "Parr",
+            "SourceSystem__c": "https://www.google.com",
+            "AccountId": "@AccountRef1"
+        }
+    ]
+}

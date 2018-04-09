@@ -4,13 +4,21 @@ This is a quick demo of how to create a record, while defaulting values (instead
 
 **Please note: sample code (metadata api and dx formats) are available in the [mdapi](./mdapi) and [dx](./dx) folders above**
 
-# Quick Action Demo
+# Lightning Action Demo
 
 We want to create an Opportunity off a contact (defaulting specific values on create)
 
+Instead of using the infamous URL Hacks, we want a better way. That is supported, but also declarative.
+
 ![Publisher Action Demo](docs/images/publisherAction.gif)
 
-Instead of using the infamous URL Hacks, we want a better way. That is supported, but also declarative.
+In this case, if we create an Opportunity off the 'new opportunity' button, we see there is nothing defaulted.
+
+But if we create the Opportunity off a Contact using a Quick Action, we can default information off the current Contact (name, but also advanced information or Custom Settings and other logic)
+
+All of this is configurable, even with its own layout to only request info that is actually needed.
+
+Using Default Values on the Quick Action, you can define the values to use in a similar way to defining formula fields - even fields not shown.
 
 That works in all environments (Classic/LEX/SF1/etc)
 
@@ -65,13 +73,17 @@ Thats it, you can now open the org, and find the 'ticket' object in the 'all tab
 
 # List Button Demo
 
-There may be times that we don't want a Publisher action, and want to enter directly off the related list. [[ need more info on need ]]
+There may be times that we don't want a Publisher action, and want to enter directly off the related list.
 
 ![Related List Demo](docs/images/listButton.gif)
 
-In this case, we can leverage [Visualforce List Buttons](https://trailhead.salesforce.com/modules/lex_javascript_button_migration/units/javascript_button_alternatives)
+In this case, [Visualforce List Buttons](https://trailhead.salesforce.com/modules/lex_javascript_button_migration/units/javascript_button_alternatives) would be needed as they are supported in List Views.
 
-Using [sforce.one.createRecord](https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm) with defaultFieldValues.
+(as Quick Actions and Lightning Actions are note supported in List Views) 
+
+In this case, we can create a [Visualforce Page using Lightning Design System](https://trailhead.salesforce.com/en/projects/workshop-lightning-design-system-visualforce)
+
+that can dispatch Lightning Events using [sforce.one.createRecord](https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm) - defaulting values with the defaultFieldValues parameter.
 
 But we must be aware: there are caveats to support in various environments.
 

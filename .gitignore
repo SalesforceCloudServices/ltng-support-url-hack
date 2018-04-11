@@ -1,4 +1,5 @@
 .DS_Store
 **/*.profile
 **/*.profile-meta.xml
+**/dx/.sfdx
 

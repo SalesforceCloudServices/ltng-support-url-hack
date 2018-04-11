@@ -46,7 +46,7 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 
 **1.** Run the following command:
 
-	sfdx force:mdapi:deploy -d mdapi -u [[orgAlias]] -w
+	sfdx force:source:push -u [[orgAlias]]
 
 **2.** Add the permission set to your user
 
@@ -56,10 +56,10 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 
 	# create the Opportunity Settings Custom Setting
 	# (Custom Metadata is Better, but plays different)
-	sfdx force:data:tree:import -f data/tree/OpportunitySettings__c.json -u [[orgAlias]]
+	sfdx force:data:tree:import -f ../data/tree/OpportunitySettings__c.json -u [[orgAlias]]
 	
 	# create dinoco account and Bob Parr contact
-	sfdx force:data:tree:import -p data/trees/contacty/Account-Contact-plan.json -u [[orgAlias]]
+	sfdx force:data:tree:import -p ../data/trees/Account-Contact-plan.json -u [[orgAlias]]
 	
 ...
 

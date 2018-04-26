@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- LastName of the user that created this record --></help>
+    <label><!-- Created By User LastNam --></label>
+    <name>CreatedByUserLastName__c</name>
+</CustomFieldTranslation>

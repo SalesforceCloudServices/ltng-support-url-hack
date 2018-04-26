@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Base this child was created from --></help>
+    <label><!-- URL Hack Base --></label>
+    <name>URLHackBase__c</name>
+    <relationshipLabel><!-- URL Hack Children --></relationshipLabel>
+</CustomFieldTranslation>

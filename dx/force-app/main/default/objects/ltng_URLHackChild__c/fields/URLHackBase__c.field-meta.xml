@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>URLHackBase__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Base this child was created from</inlineHelpText>
+    <label>URL Hack Base</label>
+    <referenceTo>ltng_UrlHackBase__c</referenceTo>
+    <relationshipLabel>URL Hack Children</relationshipLabel>
+    <relationshipName>URLHackChildren</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

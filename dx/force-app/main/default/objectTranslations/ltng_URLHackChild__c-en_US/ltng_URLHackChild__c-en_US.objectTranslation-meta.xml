@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>URL Hack Child</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>URL Hack Children</value>
+    </caseValues>
+    <layouts>
+        <layout>URL Hack Child Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Extended Info --></label>
+            <section>Extended Info</section>
+        </sections>
+        <sections>
+            <label><!-- Minimum Info --></label>
+            <section>Minimum Info</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description><!-- Extended version of the URL Hack Record --></description>
+        <label><!-- Extended --></label>
+        <name>Extended</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Bare minimum we want for a Record --></description>
+        <label><!-- Minimum --></label>
+        <name>Minimum</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

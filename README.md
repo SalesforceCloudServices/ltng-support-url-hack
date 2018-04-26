@@ -68,6 +68,29 @@ Thats it, you can now open the org, and find the 'ticket' object in the 'all tab
 	sfdx force:org:open -u [[orgAlias]]
 
 
+---
+
+# Quick Action How-To
+
+To create a Quick Action (Publisher Action):
+
+* Create a [Quick Actions](https://trailhead.salesforce.com/modules/lex_javascript_button_migration/units/javascript_button_alternatives) from Parent
+* Specify the `Predefined Field Values` through formulas
+* Specify the Form layout
+* Add the Quick Action to the Parent page layout.
+
+![Publisher Action Demo](docs/images/publisherAction.gif)
+
+Please see the [Quick Action Considerations](https://help.salesforce.com/articleView?id=actions_considerations.htm&type=5) for limitations.
+
+.
+
+.
+
+.
+
+.
+
 -----
 
 
@@ -89,30 +112,43 @@ But we must be aware: there are caveats to support in various environments.
 
 ** Please see BELOW for more detail **
 
----
+----
 
-# Quick Action How-To
+# Install Demo via Salesforce CLI
 
-To create a Quick Action (Publisher Action):
+This assumes you have already installed the [Salesforce CLI]() and [Connected the Salesforce CLI to your org](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm).
 
-* Create a [Quick Actions](https://trailhead.salesforce.com/modules/lex_javascript_button_migration/units/javascript_button_alternatives) from Parent
-* Specify the `Predefined Field Values` through formulas
-* Specify the Form layout
-* Add the Quick Action to the Parent page layout.
+However, the Salesforce CLI can be used with any org and does not require Salesforce DX to be enabled. (Although enabling the DX / Dev Hub would give some great benefits, and would only require care of [certain object permissions: Scratch Org Info, ActiveScratchOrg, NamespaceRegistry](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_add_users.htm) - as they are not available in all orgs)
 
-![Publisher Action Demo](docs/images/publisherAction.gif)
+**1.** Run the following command:
 
-Please see the [Quick Action Considerations](https://help.salesforce.com/articleView?id=actions_considerations.htm&type=5) for limitations.
+	sfdx force:source:push -u [[orgAlias]]
+
+**2.** Add the permission set to your user
+
+	sfdx force:user:permset:assign -n URLHackerAvoider -u [[orgAlias]]
+	
+**3.** Upload the data
+
+	# create the Opportunity Settings Custom Setting
+	# (Custom Metadata is Better, but plays different)
+	sfdx force:data:tree:import -f ../data/tree/OpportunitySettings__c.json -u [[orgAlias]]
+	
+	# create dinoco account and Bob Parr contact
+	sfdx force:data:tree:import -p ../data/trees/Account-Contact-plan.json -u [[orgAlias]]
+	
+...
+
+Thats it, you can now open the org, and find the 'ticket' object in the 'all tabs' search.
+
+	sfdx force:org:open -u [[orgAlias]]
+
 
 ---
 
 # List Button How-To
 
 [Visualforce List Buttons](https://trailhead.salesforce.com/modules/lex_javascript_button_migration/units/javascript_button_alternatives) differ from Quick Actions in that they use the record Page Layout, instead of a form specific for the action, and so Page Layout assignments are honored.
-
-However, it is important to keep in mind that they are not supported equally in all environments.
-
-*[[ !!! Document needed to show support levels ]]*
 
 ## List Button Definition
 

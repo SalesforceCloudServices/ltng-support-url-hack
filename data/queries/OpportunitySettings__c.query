@@ -1,1 +1,0 @@
-SELECT OpportunityCustomURL__c from OpportunitySettings__c

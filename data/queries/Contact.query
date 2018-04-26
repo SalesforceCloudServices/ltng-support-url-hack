@@ -1,1 +1,0 @@
-SELECT Name, (select FirstName, LastName, SourceSystem__c from Contacts) from Account

@@ -3,3 +3,6 @@
 #
 
 package.xml
+**.profiles
+
+**/Security.settings*

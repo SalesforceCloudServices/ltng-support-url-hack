@@ -1,5 +1,6 @@
+/dx/.sfdx
 .DS_Store
-**/*.profile
-**/*.profile-meta.xml
-**/dx/.sfdx
-
+createTemplateProject.sh
+*.profile*
+**/.vscode
+**/Security.settings*

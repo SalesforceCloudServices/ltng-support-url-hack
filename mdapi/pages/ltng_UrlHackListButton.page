@@ -1,0 +1,96 @@
+<!--
+/**
+ * VisualForce page that performs a 'URL Hack' from a List Button.
+ * @page ltng_URLHackListButton
+ */
+-->
+<apex:page standardController="ltng_URLHackChild__c" extensions="ltng_UrlHackListButtonCtrl"
+    recordSetVar="customChildren"
+    standardStylesheets="false" showHeader="false" sidebar="false"
+    applyHtmlTag="false" applyBodyTag="false" docType="html-5.0"
+>
+    <!-- <apex:includeLightning /> -->
+    
+    <!-- include Lightning Design System for style parity -->
+    <apex:slds />
+    
+    <div class="slds-scope">
+        
+        <!--
+        example spinner if desired
+        <div role="status" class="slds-spinner slds-spinner_medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+        -->
+        
+        <!--
+        There is no current callback on CANCEL, but redirection does work on success.
+		
+        However, sforce.one supports redirection back to the original page.
+        
+        Please see here for more detail:
+        https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
+        -->
+        <button class='slds-button slds-button--neutral slds-button--brand'
+            onclick='javascript:sforce.one.back();false;'
+        >
+            Back
+        </button>
+    </div>
+    
+    <script>
+        //-- safely perform window load handling
+        var previousOnload = window.onload;
+        window.onload = function() {
+            if (previousOnload) { previousOnload(); }
+            
+            console.info('about to create a record');
+            
+            //-- UPDATE ITEMS BELOW
+            
+            //-- determine values to provide for default values
+            var resultStr = "{! JSENCODE(serializedDefaultValues) }";
+            var resultValue = JSON.parse(resultStr);
+
+            //-- get the default values
+            var recordTypeId = resultValue.recordTypeId;
+            var baseRecordId = resultValue.baseInfo.Id;
+            var childName = resultValue.baseInfo.Name + ' Child';
+            var childDescription = resultValue.baseInfo.CustomDescription__c;
+            var childCheckbox = resultValue.baseInfo.SampleCheckbox__c;
+            var childDate = resultValue.baseInfo.SampleDate__c;
+            var childNumber = resultValue.baseInfo.SampleNumber__c;
+            var childPicklist = resultValue.baseInfo.SamplePicklist__c;
+            var createdByUserLastName = resultValue.currentUserLastName;
+            var customSettingValue = resultValue.customMetadataInfo.MetadataValue__c;
+            var customMetadataValue = resultValue.customSettingInfo.CustomSettingValue__c;
+
+            //-- sforce.one.createRecord( ObjectType, RecordType, defaultField Values)
+            //-- see here for more information
+            //-- https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
+            
+            var defaultObject = {
+                'URLHackBase__c': baseRecordId,
+                'Name': childName,
+                'CustomDescription__c': childDescription,
+                'SampleCheckbox__c': childCheckbox,
+                'SampleDate__c': childDate,
+                'SampleNumber__c': childNumber,
+				'SamplePicklist__c': childPicklist,
+                'CreatedByUserLastName__c': createdByUserLastName,
+                'CustomSettingValue__c': customSettingValue,
+                'CustomMetadataValue__c': customMetadataValue
+            };
+            
+            //-- for example: optionally add in properties as needed;
+    		//-- see here for more info:
+    		//-- https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
+		    //-- sforce.one.createRecord( sObjectName, recordTypeId, objectWithDefaultPropertyValues );
+    		sforce.one.createRecord('ltng_URLHackChild__c', recordTypeId, defaultObject );
+            
+    		//-- UPDATE ITEMS ABOVE
+        }
+    </script>
+</apex:page>

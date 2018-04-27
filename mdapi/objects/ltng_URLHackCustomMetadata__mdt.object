@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Example metadata used when performing a URL Hack</description>
+    <label>URL Hack Custom Metadata</label>
+    <pluralLabel>URL Hack Custom Metadata</pluralLabel>
+    <visibility>Public</visibility>
+    <fields>
+        <fullName>MetadataValue__c</fullName>
+        <defaultValue>"Value from Custom Metadata"</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Value to be used in URL Hack</inlineHelpText>
+        <label>Metadata Value</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+</CustomObject>

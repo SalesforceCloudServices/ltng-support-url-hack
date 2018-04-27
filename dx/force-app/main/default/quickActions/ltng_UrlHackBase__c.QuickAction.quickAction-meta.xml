@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Quick Action to create the Child</description>
+    <fieldOverrides>
+        <field>CreatedByUserLastName__c</field>
+        <formula>$User.LastName</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>CustomDescription__c</field>
+        <formula>"Quick Action Defaulted Description"</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>CustomSettingValue__c</field>
+        <formula>$Setup.ltng_URLHackCustomSetting__c.CustomSettingValue__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Name</field>
+        <formula>ltng_UrlHackBase__c.Name + " Child"</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>SampleCheckbox__c</field>
+        <formula>ltng_UrlHackBase__c.SampleCheckbox__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>SampleDate__c</field>
+        <formula>ltng_UrlHackBase__c.SampleDate__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>SampleNumber__c</field>
+        <formula>ltng_UrlHackBase__c.SampleNumber__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>SamplePicklist__c</field>
+        <literalValue>New</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>URLHackBase__c</field>
+        <formula>ltng_UrlHackBase__c.Id</formula>
+    </fieldOverrides>
     <label>Quick Action</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>
@@ -16,12 +52,46 @@
                 <field>CustomDescription__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>SampleCheckbox__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>SampleNumber__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>CustomSettingValue__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>URLHackBase__c</field>
                 <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>true</emptySpace>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>SampleDate__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>SamplePicklist__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>CustomMetadataValue__c</field>
+                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
     </quickActionLayout>

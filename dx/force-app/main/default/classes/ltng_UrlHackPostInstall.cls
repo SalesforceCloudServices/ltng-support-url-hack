@@ -26,10 +26,10 @@ global class ltng_UrlHackPostInstall implements InstallHandler {
             this.removeAllCustomSettingRecords();
         }
         
-        this.addUserToPermissionSet();
-        
         this.createBaseRecords();
         this.createCustomSettingRecords();
+
+        this.addUserToPermissionSet();
     }
     
     /**
@@ -39,9 +39,9 @@ global class ltng_UrlHackPostInstall implements InstallHandler {
     global void runEverything(){
         this.removeAllBaseRecords();
         this.removeAllCustomSettingRecords();
-        this.addUserToPermissionSet();
         this.createBaseRecords();
         this.createCustomSettingRecords();
+        this.addUserToPermissionSet();
     }
     
     global ltng_UrlHackBase__c[] removeAllBaseRecords(){

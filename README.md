@@ -782,7 +782,36 @@ This works very similar to an App Exchange install.
 
 Please login to an available sandbox and click the link below.
 
-@TODO
+https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZRQAY
+
+#### Once the install is complete
+
+You should now see the `URL Hack Demo` app,
+and follow along with the demos above.
+
+![URL Hack Demo App](docs/images/URLHackDemoApp.png)
+
+**Hrm. I don't see the app / records / The post-installation script didn't run**
+
+We have heard some people say the post-installation script does not run for them - We are looking into it.
+
+If this occurs, we just need to run a single line from anonymous apex:
+
+Open the Developer Console from the 'Gear' at the top right.
+
+![Developer Console Open](docs/images/developerConsole1.png)
+
+From here, select Debug > `Open Execute Anonymous Window`
+
+![Developer Console open Anonymous Apex](docs/images/developerConsole2.png)
+
+Finally, run this command:
+
+	new ltng_UrlHackPostInstall().runEverything();
+	
+For example:
+
+![Developer Console run anonymous apex](docs/images/developerConsole3.png)
 
 ## Install via Salesforce CLI
 

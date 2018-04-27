@@ -782,7 +782,7 @@ This works very similar to an App Exchange install.
 
 Please login to an available sandbox and click the link below.
 
-[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZWQAY](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZWQAY)
+[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZgQAI](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZgQAI)
 
 #### Once the install is complete
 
@@ -791,12 +791,41 @@ and follow along with the demos above.
 
 ![URL Hack Demo App](docs/images/URLHackDemoApp.png)
 
-**Hrm. I don't see the app / records / The post-installation script didn't run**
+#### Known Issue
 
-We have heard some people say the post-installation script does not run for them - We are looking into it.
+We are working with different teams, but it appears as though the installation works correctly from Salesforce CLI, but requires additional steps from the insllation URL.
 
-If this occurs, we just need to run a single line from anonymous apex:
+**We appologize for this inconvenience and are working towards correcting it**
 
+##### Add the missing permissions on the permission set
+
+**1.** Find the 'Url Hack Demo Participant' Permission set.
+
+![Find Permission Set](docs/images/correctPermissionSet.png)
+
+**2.** Navigate to Object Permissions > Url Hack Children
+
+![Permission Set > Object Permissions > Url Hack Children](docs/images/correctPermissionSet2.png)
+
+Add Extended and Minimum Record types to the Permission Set.
+
+![Add record types to permission set](docs/images/correctPermissionSet3.png)
+
+##### Add the current user to the permission set
+
+Next, we want to add the current user to the Permission Set.
+
+**1.** Click the `Manage Assignments` button on the permission set.
+
+![Manage Assignments Button](docs/images/addUserAssignment.jpg)
+
+**2.** Click `Add Assignment` button
+
+**3.** Click the checkbox next to your user. Then click the `Assign` button.
+
+![Add current user to permission set](docs/images/addUserAssignment2.jpg)
+
+##### Run the Anonymous Apex to run the install script
 Open the Developer Console from the 'Gear' at the top right.
 
 ![Developer Console Open](docs/images/developerConsole1.png)

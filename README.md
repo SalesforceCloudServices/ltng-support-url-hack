@@ -50,7 +50,7 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 
 **2.** Add the permission set to your user
 
-	sfdx force:user:permset:assign -n URLHackerAvoider -u [[orgAlias]]
+	sfdx force:user:permset:assign -n UrlHackDemoParticipant -u [[orgAlias]]
 	
 **3.** Upload the data
 
@@ -126,7 +126,7 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 
 **2.** Add the permission set to your user
 
-	sfdx force:user:permset:assign -n URLHackerAvoider -u [[orgAlias]]
+	sfdx force:user:permset:assign -n UrlHackDemoParticipant -u [[orgAlias]]
 	
 **3.** Upload the data
 

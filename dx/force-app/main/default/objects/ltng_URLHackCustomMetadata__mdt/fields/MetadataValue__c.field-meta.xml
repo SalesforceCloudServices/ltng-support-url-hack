@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>MetadataValue__c</fullName>
-    <defaultValue>"Metadata Value"</defaultValue>
+    <defaultValue>"Value from Custom Metadata"</defaultValue>
     <externalId>false</externalId>
-    <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>Some value that will be used in a URL Hack</inlineHelpText>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Value to be used in URL Hack</inlineHelpText>
     <label>Metadata Value</label>
     <length>255</length>
-    <required>true</required>
+    <required>false</required>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

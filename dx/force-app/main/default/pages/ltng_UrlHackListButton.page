@@ -1,0 +1,102 @@
+<!--
+/**
+ * VisualForce page that performs a 'URL Hack' from a List Button.
+ * @page ltng_URLHackListButton
+ */
+-->
+<apex:page standardController="ltng_URLHackChild__c" extensions="ltng_UrlHackListButtonCtrl"
+    recordSetVar="customChildren"
+    standardStylesheets="false" showHeader="false" sidebar="false"
+    applyHtmlTag="false" applyBodyTag="false" docType="html-5.0"
+>
+    <!-- <apex:includeLightning /> -->
+    
+    <!-- include Lightning Design System for style parity -->
+    <apex:slds />
+    
+    <div class="slds-scope">
+        
+        <!--
+        example spinner if desired
+        <div role="status" class="slds-spinner slds-spinner_medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+        -->
+        
+        <!--
+        There is no current callback on createRecord completion.
+        However, sforce.one supports redirection back to the original page.
+        
+        Please see here for more detail:
+        https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
+        -->
+        <button class='slds-button slds-button--neutral slds-button--brand'
+            onclick='javascript:sforce.one.back();false;'
+        >
+            Back
+        </button>
+    </div>
+    
+    <script>
+        //-- safely perform window load handling
+        //var previousOnload = window.onload;
+        //window.onload = function() {
+        //    if (previousOnload) { previousOnload(); }
+            
+            console.info('about to create a record');
+            
+            //-- UPDATE ITEMS BELOW
+            
+            //-- determine values to provide for default values
+    		
+		    //-- quotes around strings
+    		var recordTypeId = '{! recordTypeId }';
+            var baseRecordId = '{! baseInfo.Id }';
+    		//-- make child name: base.name + " Child"
+    		var childName = '{! baseInfo.Name } Child';
+    		//-- make description: "Child of " + base.customDescription
+            var childDescription = 'Child of {! baseInfo.CustomDescription__c }';
+		    //-- quotes around strings
+            var createdByUserLastName = '{! currentUserLastName }';
+            var customSettingValue = '{! customSettingInfo.CustomSettingValue__c }';
+    		var customMetadataValue = '{! customMetadataInfo.MetadataValue__c }';
+		    //-- checkboxes are true/false, so no quotes
+            var childCheckbox = {! baseInfo.SampleCheckbox__c };
+    		//-- convert dates
+    		var childDateStr = '{! baseInfo.SampleDate__c }'; //-- ex: Wed Apr 25 2018 19:00:00 GMT-0500 (CDT)
+		    //-- convert date to ISO String: 2018-04-26T00:00:00.000Z
+    		var childDate = (new Date('{! baseInfo.SampleDate__c }').toISOString());
+            //-- convert number
+            var childNumber = parseFloat( {! baseInfo.SampleNumber__c } );
+		    //-- picklists are strings
+            var childPicklist = '{! baseInfo.SamplePicklist__c }';
+            
+            //-- sforce.one.createRecord( ObjectType, RecordType, defaultField Values)
+            //-- see here for more information
+            //-- https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
+            
+            var defaultObject = {
+                'URLHackBase__c': baseRecordId,
+                'Name': childName,
+                'CustomDescription__c': childDescription,
+                'CreatedByUserLastName__c': createdByUserLastName,
+                'CustomSettingValue__c': customSettingValue,
+                'CustomMetadataValue__c': customMetadataValue,
+                'SampleCheckbox__c': childCheckbox,
+                'SampleDate__c': childDate,
+                'SampleNumber__c': childNumber,
+                'SamplePicklist__c': childPicklist
+            };
+            
+            //-- for example: optionally add in properties as needed;
+    		//-- see here for more info:
+    		//-- https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
+		    //-- sforce.one.createRecord( sObjectName, recordTypeId, objectWithDefaultPropertyValues );
+    		sforce.one.createRecord('ltng_URLHackChild__c', recordTypeId, defaultObject );
+            
+    		//-- UPDATE ITEMS ABOVE
+        //}
+    </script>
+</apex:page>

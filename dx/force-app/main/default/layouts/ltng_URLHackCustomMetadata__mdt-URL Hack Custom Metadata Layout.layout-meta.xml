@@ -15,7 +15,7 @@
                 <field>DeveloperName</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>MetadataValue__c</field>
             </layoutItems>
         </layoutColumns>

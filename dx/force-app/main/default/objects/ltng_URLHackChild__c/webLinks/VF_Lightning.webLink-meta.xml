@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VF_Lightning</fullName>
+    <availability>online</availability>
+    <description>Create records using Lightning within VisualForce</description>
+    <displayType>massActionButton</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>VF Lightning</masterLabel>
+    <openType>sidebar</openType>
+    <page>ltng_UrlHackListButton</page>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+</WebLink>

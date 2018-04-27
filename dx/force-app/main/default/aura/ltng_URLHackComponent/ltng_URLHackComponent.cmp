@@ -1,0 +1,51 @@
+<!--
+/**
+ * Component that performs similar to a URL Hack (from a Lightning Action)
+ * @component: ltng_URLHackComponent
+ **/
+-->
+<aura:component
+    controller="ltng_URLHackComponentCtrl"
+    implements="force:hasRecordId,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction"
+    access="global"
+>
+    <!-- note: it must implement force:hasRecordId
+        so the recordId attribute is automatically filled -->
+    <!-- attributes -->
+        <!-- automatically provided because we implement force:hasRecordId -->
+        <aura:attribute name="recordId" type="String" />
+        <!-- container for the data we retrieve with recordData.
+            note: type is the sObject type we are loading -->
+        <aura:attribute name="baseInfo" type="ltng_UrlHackBase__c" />
+        <!-- container for the error if baseInfo cannot be loaded -->
+        <aura:attribute name="baseInfoError" type="String" />
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <!-- data -->
+    <!-- see here for more on loading record data:
+        https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/aura_compref_force_recordData.htm?search_text=force:recordData
+        aura:id (string) - name we can use to access the recordData
+        fields: (string[]) - comma separated list of fields to retrieve
+        (note sobject type is specified on the baseInfo attribute)
+        mode (VIEW or EDIT) - what mode to load the record
+        recordUpdated (handler) - controller function to call when data has loaded
+        targetFields (attribute sObject) - the place to put the resulting data
+        targetError (attribute string) - container where the error message goes (if any)
+    -->
+    <force:recordData aura:id="baseInfo"
+        recordId="{!v.recordId}"
+        fields="Id, Name, CustomDescription__c, SampleCheckbox__c, SampleDate__c, SampleNumber__c, SamplePicklist__c"
+        mode="VIEW"
+        recordUpdated="{!c.baseInfoUpdated}"
+        targetFields="{!v.baseInfo}"
+        targetError="{!v.baseInfoError}"
+    />
+    <!-- events -->
+    <!-- elements -->
+	<!-- show a spinner while everything loads -->
+    <div class="slds-spinner--brand slds-spinner slds-spinner--small" role="alert">
+        <span class="slds-assistive-text">Loading...</span>
+        <div class="slds-spinner__dot-a"></div>
+        <div class="slds-spinner__dot-b"></div>
+    </div>
+</aura:component>

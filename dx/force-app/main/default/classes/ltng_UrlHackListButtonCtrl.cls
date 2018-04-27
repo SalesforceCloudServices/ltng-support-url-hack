@@ -36,6 +36,14 @@ public class ltng_UrlHackListButtonCtrl {
         //-- retrieve all the info you need to default
         //-- recordTypeIds are needed if there are multiple
         
+        //-- get the record type that the child should be
+        //-- Schema.SObjectType.SOBJECT_NAME.getRecordTypeInfosByName().get('RECORD_TYPE_NAME').getRecordTypeId();
+
+        this.recordTypeId = Schema.SObjectType.ltng_UrlHackChild__c
+            .getRecordTypeInfosByName().get('Extended').getRecordTypeId();
+        
+        /*
+        //-- alternative way of getting recordTypeId
         try {
             this.recordTypeId = [
                 SELECT Id, DeveloperName, Name, SObjectType
@@ -47,6 +55,7 @@ public class ltng_UrlHackListButtonCtrl {
             System.debug('unable to find record type ID');
             System.debug(err);
         }
+        **/
         
         //-- fetch the user information
         this.currentUserLastName = UserInfo.getLastName();
@@ -61,7 +70,7 @@ public class ltng_UrlHackListButtonCtrl {
                 LIMIT 1
             ];
         } catch(Exception err){
-            System.debug('exception when finding contact');
+            System.debug('exception when fetching the base record');
             System.debug(err);
         }
                 
@@ -86,6 +95,7 @@ public class ltng_UrlHackListButtonCtrl {
             System.debug(err);
         }
         
-        //-- optionally get information from custom metadata
+        //--	-	-	-	-	-	-	-	-	-	-	-
+        //-- UPDATE THE LINES ABOVE
     }
 }

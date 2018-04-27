@@ -4,7 +4,12 @@
 	 */
 	handleDefaultValues : function(resultValue, component, helper){
 		console.info('default values retrieved');
+
+        //--	-	-	-	-	-	-	-	-	-	-	-
+        //-- UPDATE THE LINES BELOW
+        //--	-	-	-	-	-	-	-	-	-	-	-
 		
+		//-- determine the values to use for defaulting
 		var recordTypeId = resultValue.childRecordTypeId;
 		var baseRecordId = resultValue.baseInfo.Id;
 		var childName = resultValue.baseInfo.Name + ' Child';
@@ -16,6 +21,17 @@
 		var createdByUserLastName = resultValue.currentUserLastName;
 		var customSettingValue = resultValue.customMetadataInfo.MetadataValue__c;
 		var customMetadataValue = resultValue.customSettingInfo.CustomSettingValue__c;
+
+		//-- call force:createRecord
+		//-- see here for more info https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/ref_force_createRecord.htm
+		//-- createRecordEvent.setParams({
+		//-- 	'entityApiName': 'SObject_Name',
+		//--	'recordTypeId': RECORD_TYPE_OF_THE_OBJECT_TO_CREATE,
+		//--	'defaultFieldValues': {
+		//--		'FieldApi__c': defaultValue
+		//--		...
+		//--	}
+		//-- })
 
 		var createRecordEvent = $A.get("e.force:createRecord");
 		createRecordEvent.setParams({
@@ -34,6 +50,10 @@
 				'SamplePicklist__c': childPicklist
 			}
 		});
+		//--	-	-	-	-	-	-	-	-	-	-	-
+		//-- UPDATE THE LINES ABOVE
+		//--	-	-	-	-	-	-	-	-	-	-	-
+
 		createRecordEvent.fire();
 
 		helper.closeWindow();

@@ -782,7 +782,7 @@ This works very similar to an App Exchange install.
 
 Please login to an available sandbox and click the link below.
 
-[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZRQAY](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZRQAY)
+[https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZWQAY](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZWQAY)
 
 #### Once the install is complete
 

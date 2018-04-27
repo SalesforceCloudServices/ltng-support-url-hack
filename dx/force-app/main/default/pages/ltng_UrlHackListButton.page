@@ -42,38 +42,31 @@
     
     <script>
         //-- safely perform window load handling
-        //var previousOnload = window.onload;
-        //window.onload = function() {
-        //    if (previousOnload) { previousOnload(); }
+        var previousOnload = window.onload;
+        window.onload = function() {
+            if (previousOnload) { previousOnload(); }
             
             console.info('about to create a record');
             
             //-- UPDATE ITEMS BELOW
             
             //-- determine values to provide for default values
-    		
-		    //-- quotes around strings
-    		var recordTypeId = '{! recordTypeId }';
-            var baseRecordId = '{! baseInfo.Id }';
-    		//-- make child name: base.name + " Child"
-    		var childName = '{! baseInfo.Name } Child';
-    		//-- make description: "Child of " + base.customDescription
-            var childDescription = 'Child of {! baseInfo.CustomDescription__c }';
-		    //-- quotes around strings
-            var createdByUserLastName = '{! currentUserLastName }';
-            var customSettingValue = '{! customSettingInfo.CustomSettingValue__c }';
-    		var customMetadataValue = '{! customMetadataInfo.MetadataValue__c }';
-		    //-- checkboxes are true/false, so no quotes
-            var childCheckbox = {! baseInfo.SampleCheckbox__c };
-    		//-- convert dates
-    		var childDateStr = '{! baseInfo.SampleDate__c }'; //-- ex: Wed Apr 25 2018 19:00:00 GMT-0500 (CDT)
-		    //-- convert date to ISO String: 2018-04-26T00:00:00.000Z
-    		var childDate = (new Date('{! baseInfo.SampleDate__c }').toISOString());
-            //-- convert number
-            var childNumber = parseFloat( {! baseInfo.SampleNumber__c } );
-		    //-- picklists are strings
-            var childPicklist = '{! baseInfo.SamplePicklist__c }';
-            
+            var resultStr = "{! JSENCODE(serializedDefaultValues) }";
+            var resultValue = JSON.parse(resultStr);
+
+            //-- get the default values
+            var recordTypeId = resultValue.recordTypeId;
+            var baseRecordId = resultValue.baseInfo.Id;
+            var childName = resultValue.baseInfo.Name + ' Child';
+            var childDescription = resultValue.baseInfo.CustomDescription__c;
+            var childCheckbox = resultValue.baseInfo.SampleCheckbox__c;
+            var childDate = resultValue.baseInfo.SampleDate__c;
+            var childNumber = resultValue.baseInfo.SampleNumber__c;
+            var childPicklist = resultValue.baseInfo.SamplePicklist__c;
+            var createdByUserLastName = resultValue.currentUserLastName;
+            var customSettingValue = resultValue.customMetadataInfo.MetadataValue__c;
+            var customMetadataValue = resultValue.customSettingInfo.CustomSettingValue__c;
+
             //-- sforce.one.createRecord( ObjectType, RecordType, defaultField Values)
             //-- see here for more information
             //-- https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
@@ -82,13 +75,13 @@
                 'URLHackBase__c': baseRecordId,
                 'Name': childName,
                 'CustomDescription__c': childDescription,
+                'SampleCheckbox__c': childCheckbox,
+                'SampleDate__c': childDate,
+                'SampleNumber__c': childNumber,
+				'SamplePicklist__c': childPicklist,
                 'CreatedByUserLastName__c': createdByUserLastName,
                 'CustomSettingValue__c': customSettingValue,
-                'CustomMetadataValue__c': customMetadataValue,
-                'SampleCheckbox__c': childCheckbox,
-                'SampleNumber__c': childNumber,
-                'SampleDate__c': childDate,
-				'SamplePicklist__c': childPicklist
+                'CustomMetadataValue__c': customMetadataValue
             };
             
             //-- for example: optionally add in properties as needed;
@@ -98,6 +91,6 @@
     		sforce.one.createRecord('ltng_URLHackChild__c', recordTypeId, defaultObject );
             
     		//-- UPDATE ITEMS ABOVE
-        //}
+        }
     </script>
 </apex:page>

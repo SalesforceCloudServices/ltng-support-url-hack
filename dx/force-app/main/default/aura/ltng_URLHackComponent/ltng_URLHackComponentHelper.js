@@ -4,11 +4,11 @@
 	 */
 	handleDefaultValues : function(resultValue, component, helper){
 		console.info('default values retrieved');
-		debugger;
-
+		
+		var recordTypeId = resultValue.childRecordTypeId;
 		var baseRecordId = resultValue.baseInfo.Id;
 		var childName = resultValue.baseInfo.Name + ' Child';
-		var childDescription = 'Child of ' + resultValue.baseInfo.CustomDescription__c;
+		var childDescription = resultValue.baseInfo.CustomDescription__c;
 		var childCheckbox = resultValue.baseInfo.SampleCheckbox__c;
 		var childDate = resultValue.baseInfo.SampleDate__c;
 		var childNumber = resultValue.baseInfo.SampleNumber__c;
@@ -20,7 +20,7 @@
 		var createRecordEvent = $A.get("e.force:createRecord");
 		createRecordEvent.setParams({
 			'entityApiName': 'ltng_URLHackChild__c',
-			'recordTypeId': null,
+			'recordTypeId': recordTypeId,
 			'defaultFieldValues': {
 				'URLHackBase__c': baseRecordId,
 				'Name': childName,
@@ -44,49 +44,6 @@
 	 */
 	closeWindow : function(){
 		$A.get("e.force:closeQuickAction").fire()
-	},
-	
-	/**
-	 * method called when base info has finished loading
-	 **/
-	checkAllDataLoaded : function(component, event, helper) {
-
-		//-- if all data has loaded - we can create the child
-		helper.createChildFromBaseInfo(component, helper);
-	},
-
-	/**
-	 * Create a child using info from base object
-	 * @param baseInfo ()
-	 */
-	createChildFromBaseInfo : function(component, helper){
-		//-- determine the default values
-		debugger;
-
-		var baseInfo = component.get('v.baseInfo');
-		var baseRecordId = baseInfo.Id;
-		var childName = baseInfo.Name + " Child";
-		var childDescription = baseInfo.CustomDescription__c;
-		var childCheckbox = baseInfo.SampleCheckbox__c;
-		var childDate = baseInfo.SampleDate__c;
-		var childNumber = baseInfo.SampleNumber__c;
-		var childPicklist = baseInfo.SamplePicklist__c;
-		    
-
-		createRecordEvent = $A.get('e.force:createRecord');
-		createRecordEvent.setParams({
-			'entityApiName': 'ltng_URLHackChild__c',
-			'recordTypeId': null,
-			'defaultFieldValues': {
-				'Name': childName,
-				'CustomDescription__c': childDescription,
-				'SampleCheckbox__c': childCheckbox,
-				'SampleNumber__c': childNumber,
-				'SampleDate__c': childDate,
-				'SamplePicklist__c': childPicklist
-			}
-		});
-		createRecordEvent.fire();
 	},
 
     /**

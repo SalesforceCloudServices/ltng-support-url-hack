@@ -1,25 +1,14 @@
 /**
  * Controller for VisualForce page that performs a 'URL Hack' from a List Button.
+ * <p>Note the places to update with the UPDATE THE LINES ABOVE and UPDATE THE LINES BELOW</p>
  * @class ltng_UrlHackListButtonCtrl
  **/
 public class ltng_UrlHackListButtonCtrl {
     
     //-- store properties for all data to be available for defaulting.
-    
-    /** Current user's info **/
-    public String currentUserLastName {get;set;}
-    
-    /** RecordType Id for the new Child **/
-    public String recordTypeId {get;set;}
-    
-    /** Record with info to pass in defaulted properties **/
-    public ltng_UrlHackBase__c baseInfo {get;set;}
-    
-    /** Custom Setting info to pass in defaulted properties **/ 
-    public ltng_UrlHackCustomSetting__c customSettingInfo {get;set;}
-    
-    /** Custom Metadata info to pass in defaulted properties **/ 
-    public ltng_UrlHackCustomMetadata__mdt customMetadataInfo {get;set;}
+
+    //-- we only want a single property to store the serialized version of the results
+    public String serializedDefaultValues {get;set;}
     
     /** Constructor **/
     public ltng_UrlHackListButtonCtrl( ApexPages.StandardSetController controller ){
@@ -30,39 +19,35 @@ public class ltng_UrlHackListButtonCtrl {
         //-- get the ID of the Base Record to pull from
         String baseRecordId = params.get('id');
         
+        //-- place to store the results
+        UrlHackDefaultValues results = new UrlHackDefaultValues();
+        String serializedResults;
+
+
+
+
+
+
+        //--	-	-	-	-	-	-	-	-	-	-	-
         //-- UPDATE THE LINES BELOW
         //--	-	-	-	-	-	-	-	-	-	-	-
-        
-        //-- retrieve all the info you need to default
-        //-- recordTypeIds are needed if there are multiple
-        
-        //-- get the record type that the child should be
-        //-- Schema.SObjectType.SOBJECT_NAME.getRecordTypeInfosByName().get('RECORD_TYPE_NAME').getRecordTypeId();
 
-        this.recordTypeId = Schema.SObjectType.ltng_UrlHackChild__c
+        //-- retrieve all the info you need to default
+
+        //-- recordTypeIds are needed if there are multiple
+        //-- 
+        //-- Schema.SObjectType.SOBJECT_NAME.getRecordTypeInfosByName()
+        //--    .get('RECORD_TYPE_NAME').getRecordTypeId();
+        //-- 
+        //-- in this case, we want the ltng_UrlHackChild__c SOBJECT_NAME
+        //-- and Extended RECORD_TYPE_NAME
+
+        results.recordTypeId = Schema.SObjectType.ltng_UrlHackChild__c
             .getRecordTypeInfosByName().get('Extended').getRecordTypeId();
-        
-        /*
-        //-- alternative way of getting recordTypeId
-        try {
-            this.recordTypeId = [
-                SELECT Id, DeveloperName, Name, SObjectType
-                FROM RecordType
-                WHERE SObjectType = 'ltng_URLHackChild__c'
-                AND DeveloperName = 'Extended'
-            ].Id;
-        } catch(Exception err){
-            System.debug('unable to find record type ID');
-            System.debug(err);
-        }
-        **/
-        
-        //-- fetch the user information
-        this.currentUserLastName = UserInfo.getLastName();
         
         //-- fetch the base object info
         try {
-            this.baseInfo = [SELECT Id, Name, CustomDescription__c,
+            results.baseInfo = [SELECT Id, Name, CustomDescription__c,
                 	SampleCheckbox__c, SampleDate__c, SampleNumber__c,
                 	SamplePicklist__c
                 FROM ltng_UrlHackBase__c
@@ -74,17 +59,20 @@ public class ltng_UrlHackListButtonCtrl {
             System.debug(err);
         }
                 
-        //-- fetch custom Settings
+        //-- optional fetch the user information
+        results.currentUserLastName = UserInfo.getLastName();
+        
+        //-- optional fetch custom Settings
         try {
-            this.customSettingInfo = ltng_UrlHackCustomSetting__c.getInstance();
+            results.customSettingInfo = ltng_UrlHackCustomSetting__c.getInstance();
         } catch(Exception err){
             System.debug('No Opportunity Settings instance found');
             System.debug(err);
         }
         
-        //-- fetch custom metadata
+        //-- optional fetch custom metadata
         try {
-            this.customMetadataInfo = [
+            results.customMetadataInfo = [
                 SELECT id, MetadataValue__c, QualifiedAPIName
                 FROM ltng_URLHackCustomMetadata__mdt
                 WHERE QualifiedApiName = 'ExampleCustomMetadata'
@@ -97,5 +85,46 @@ public class ltng_UrlHackListButtonCtrl {
         
         //--	-	-	-	-	-	-	-	-	-	-	-
         //-- UPDATE THE LINES ABOVE
+        //--	-	-	-	-	-	-	-	-	-	-	-
+        
+
+
+
+
+
+
+
+        this.serializedDefaultValues = JSON.serialize(results);
+    }
+
+
+    public class UrlHackDefaultValues {
+
+
+
+        //--	-	-	-	-	-	-	-	-	-	-	-
+        //-- UPDATE THE LINES BELOW
+        //--	-	-	-	-	-	-	-	-	-	-	-
+        
+        /** base info you want to return **/
+        public ltng_URLHackBase__c baseInfo;
+        
+        /** record type id for the new child **/
+        public String recordTypeId;
+
+        /** optional last name of the current user **/
+        public String currentUserLastName;
+
+        /** optional custom setting values **/
+        public ltng_UrlHackCustomSetting__c customSettingInfo;
+
+        /** optional custom metadata values **/
+        public ltng_URLHackCustomMetadata__mdt customMetadataInfo;
+
+        //--	-	-	-	-	-	-	-	-	-	-	-
+        //-- UPDATE THE LINES ABOVE
+        //--	-	-	-	-	-	-	-	-	-	-	-
+
+
     }
 }

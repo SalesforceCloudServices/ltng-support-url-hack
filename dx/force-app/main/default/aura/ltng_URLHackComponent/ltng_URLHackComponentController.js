@@ -21,32 +21,10 @@
 				return;
 			}
 
-			console.info("success");
-			debugger;
-
 			var resultValue = response.getReturnValue();
 
 			helper.handleDefaultValues(resultValue, component, helper);
 		});
 		$A.enqueueAction(action);
-	},
-
-	/**
-	 * Handles when the lightning data service notices a change
-	 * (can be one handler for all data, or a similar one for each)
-	 */
-	baseInfoUpdated : function(component, event, helper){
-		var changeType = event.getParams().changeType;
-		debugger;
-
-		if( changeType === "ERROR" ){
-			helper.displayError('Error occurred while loading data', component, event, helper);
-			debugger;
-		} else if( changeType === "LOADED" ){
-			console.info( "record loaded" );
-			//helper.checkAllDataLoaded(component, event, helper);
-		} else {
-			console.info( "Lightning Data Service noticed a change:" + changeType );
-		}
 	}
 })

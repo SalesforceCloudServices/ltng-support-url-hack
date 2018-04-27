@@ -13,7 +13,7 @@ We provide a description in three main areas:
 * [Lightning Actions](#lightning-action-demo) - a more powerful way to create children - using a bit more code
 * [List Buttons](#list-button-demo) - How to create children off a List View.
 
-Please see the [Install](#Install) section below on how to install the demo.
+Please see the [Install](#install) section below on how to install the demo.
 
 .
 

@@ -224,7 +224,6 @@ We retrieve the data and simply store it on the attributes of the custom class t
         }
 
 [See Implementation](dx/force-app/main/default/classes/ltng_URLHackComponentCtrl.cls#L17)
-@TODO
 
 #### Serialize and Return
 
@@ -234,7 +233,7 @@ Any attributes marked with [@AuraEnabled are serialized for return to the lightn
         @AuraEnabled
         public ltng_URLHackBase__c baseInfo;
 
-See Implementation - @TODO
+[See Implementation](dx/force-app/main/default/classes/ltng_URLHackComponentCtrl.cls#L75)
 
 ## LA Lightning Component
 
@@ -801,7 +800,9 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 	
 **3.** Upload the data
 
-	@TODO
+	sfdx force:data:tree:import -p data/trees/ltng_UrlHackBase__c-plan.json
+	
+	sfdx force:data:tree:import -p data/trees/ltng_URLHackCustomSetting__c-plan.json
 	
 ...
 

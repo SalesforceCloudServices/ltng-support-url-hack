@@ -150,9 +150,9 @@ Finally, we'll need a Lightning Action to use the lightning Component.
 
 To make a Lightning Action version of a URL Hack, we need three things:
 
-* An [Apex Controller](#LA-Apex-Controller)
-* A [Lightning Component](#LA-Lightning-Component)
-* A [Lightning Action](#LA-Lightning-Action)
+* An [Apex Controller](#la-apex-controller)
+* A [Lightning Component](#la-lightning-component)
+* A [Lightning Action](#la-lightning-action)
 
 ## LA Apex Controller
 
@@ -500,9 +500,9 @@ The VisualForce page then does two things:
 
 To make a List View Button, we need three things:
 
-* A [VisualForce Controller](#LB-VF-Controller) (to load the defaults)
-* A [VisualForce Page](#LB-VisualForce-Page) (to call the lightning event)
-* A [List View Button](#LB-List-Button) to expose the VisualForce Page
+* A [VisualForce Controller](#lb-vf-controller) (to load the defaults)
+* A [VisualForce Page](#lb-visualforce-page) (to call the lightning event)
+* A [List View Button](#lb-list-button) to expose the VisualForce Page
 
 ## LB VF Controller
 

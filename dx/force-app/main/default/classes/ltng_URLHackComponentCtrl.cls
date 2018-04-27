@@ -14,6 +14,8 @@ public with sharing class ltng_URLHackComponentCtrl {
 
         UrlHackDefaultValues results = new UrlHackDefaultValues();
 
+
+        //--	-	-	-	-	-	-	-	-	-	-	-
         //-- UPDATE THE LINES BELOW
         //--	-	-	-	-	-	-	-	-	-	-	-
 
@@ -61,12 +63,18 @@ public with sharing class ltng_URLHackComponentCtrl {
             System.debug('No custom metadata found');
             System.debug(err);
         }
+        //--	-	-	-	-	-	-	-	-	-	-	-
+        //-- UPDATE THE LINES ABOVE
+        //--	-	-	-	-	-	-	-	-	-	-	-
 
         return results;
     }
 
     public class UrlHackDefaultValues {
-        
+
+        //--	-	-	-	-	-	-	-	-	-	-	-
+        //-- UPDATE THE LINES BELOW
+        //--	-	-	-	-	-	-	-	-	-	-	-
         /** base info you want to return **/
         @AuraEnabled
         public ltng_URLHackBase__c baseInfo;
@@ -86,8 +94,8 @@ public with sharing class ltng_URLHackComponentCtrl {
         /** custom metadata values **/
         @AuraEnabled
         public ltng_URLHackCustomMetadata__mdt customMetadataInfo;
-    }
-    
-    //--	-	-	-	-	-	-	-	-	-	-	-
-    //-- UPDATE THE LINES ABOVE
+        //--	-	-	-	-	-	-	-	-	-	-	-
+        //-- UPDATE THE LINES ABOVE
+        //--	-	-	-	-	-	-	-	-	-	-	-
+    }    
 }

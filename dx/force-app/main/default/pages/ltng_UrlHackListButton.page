@@ -26,7 +26,8 @@
         -->
         
         <!--
-        There is no current callback on createRecord completion.
+        There is no current callback on CANCEL, but redirection does work on success.
+		
         However, sforce.one supports redirection back to the original page.
         
         Please see here for more detail:
@@ -85,9 +86,9 @@
                 'CustomSettingValue__c': customSettingValue,
                 'CustomMetadataValue__c': customMetadataValue,
                 'SampleCheckbox__c': childCheckbox,
-                'SampleDate__c': childDate,
                 'SampleNumber__c': childNumber,
-                'SamplePicklist__c': childPicklist
+                'SampleDate__c': childDate,
+				'SamplePicklist__c': childPicklist
             };
             
             //-- for example: optionally add in properties as needed;

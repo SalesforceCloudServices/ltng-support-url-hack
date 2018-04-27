@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Sample_Picklist__c</fullName>
+    <fullName>SamplePicklist__c</fullName>
     <externalId>false</externalId>
     <label>Sample Picklist</label>
     <required>false</required>

@@ -13,7 +13,7 @@ We provide a description in three main areas:
 * [Lightning Actions](#lightning-action-demo) - a more powerful way to create children - using a bit more code
 * [List Buttons](#list-button-demo) - How to create children off a List View.
 
-Please see the Deploy section below on how to install the demo.
+Please see the [Install](#Install) section below on how to install the demo.
 
 .
 
@@ -773,9 +773,9 @@ There are three methods available for you to install this demo, so you can play 
 
 (Please note, all are intended as demonstrations and are not intended for deployment to Production as is)
 
-* [Install via URL]()
-* [Install Demo via Salesforce CLI]()
-* [Install Demo via Ant/Metadata API]()
+* [Install via URL](#install-via-url)
+* [Install Demo via Salesforce CLI](#install-via-salesforce-cli)
+* [Install Demo via Ant/Metadata API](#install-via-metadata-api)
 
 ## Install via URL
 
@@ -785,7 +785,7 @@ Please login to an available sandbox and click the link below.
 
 @TODO
 
-## Install Demo via Salesforce CLI
+## Install via Salesforce CLI
 
 This assumes you have already installed the [Salesforce CLI]() and [Connected the Salesforce CLI to your org](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm).
 
@@ -812,4 +812,9 @@ and sample 'URL Hack Base' tab / records.
 	sfdx force:org:open -u [[orgAlias]]
 
 Feel free to create your own and to create children through the QuickActions, Lightning Actions or List View buttons.
+
+## Install via Metadata API
+
+To install via the metadata api, simply zip the mdapi folder and deploy using the [Metadata Migration Toolkit](https://developer.salesforce.com/docs/atlas.en-us.daas.meta/daas/) or the [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli).
+
 

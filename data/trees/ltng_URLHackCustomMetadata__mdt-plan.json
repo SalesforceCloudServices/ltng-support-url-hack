@@ -1,0 +1,10 @@
+[
+    {
+        "sobject": "ltng_URLHackCustomMetadata__mdt",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": [
+            "ltng_URLHackCustomMetadata__mdts.json"
+        ]
+    }
+]

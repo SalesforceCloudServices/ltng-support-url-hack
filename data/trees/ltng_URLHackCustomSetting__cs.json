@@ -1,0 +1,11 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "ltng_URLHackCustomSetting__c",
+                "referenceId": "ltng_URLHackCustomSetting__cRef1"
+            },
+            "CustomSettingValue__c": "Value from Custom Setting"
+        }
+    ]
+}

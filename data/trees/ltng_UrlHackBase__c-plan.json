@@ -1,0 +1,10 @@
+[
+    {
+        "sobject": "ltng_UrlHackBase__c",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": [
+            "ltng_UrlHackBase__cs.json"
+        ]
+    }
+]

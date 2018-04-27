@@ -1,0 +1,10 @@
+[
+    {
+        "sobject": "ltng_URLHackCustomSetting__c",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": [
+            "ltng_URLHackCustomSetting__cs.json"
+        ]
+    }
+]

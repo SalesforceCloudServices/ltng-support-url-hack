@@ -1,0 +1,2 @@
+select Id, Name, CustomDescription__c, SampleCheckbox__c, SampleDate__c, SampleNumber__c, SamplePicklist__c from ltng_UrlHackBase__c
+

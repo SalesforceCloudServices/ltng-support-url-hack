@@ -1,0 +1,16 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "ltng_URLHackCustomMetadata__mdt",
+                "referenceId": "ltng_URLHackCustomMetadata__mdtRef1"
+            },
+            "DeveloperName": "ExampleCustomMetadata",
+            "Label": "Example Custom Metadata",
+            "Language": "en_US",
+            "MasterLabel": "Example Custom Metadata",
+            "MetadataValue__c": "Value from Custom Metadata",
+            "QualifiedApiName": "ExampleCustomMetadata"
+        }
+    ]
+}

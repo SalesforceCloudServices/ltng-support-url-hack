@@ -1,0 +1,2 @@
+select DeveloperName, Id, Label, Language, MasterLabel, MetadataValue__c, NamespacePrefix, QualifiedApiName from ltng_URLHackCustomMetadata__mdt
+

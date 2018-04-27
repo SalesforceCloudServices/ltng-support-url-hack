@@ -5,7 +5,7 @@
     <description>Extended version of the URL Hack Record</description>
     <label>Extended</label>
     <picklistValues>
-        <picklist>Sample_Picklist__c</picklist>
+        <picklist>SamplePicklist__c</picklist>
         <values>
             <fullName>Completed</fullName>
             <default>false</default>

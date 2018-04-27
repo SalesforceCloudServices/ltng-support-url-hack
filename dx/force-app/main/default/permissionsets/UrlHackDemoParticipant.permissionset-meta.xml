@@ -42,7 +42,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>ltng_URLHackChild__c.Sample_Picklist__c</field>
+        <field>ltng_URLHackChild__c.SamplePicklist__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

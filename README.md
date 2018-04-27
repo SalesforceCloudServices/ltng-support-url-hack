@@ -5,13 +5,13 @@ This is a quick demo of how to create a record, while defaulting values (instead
 I want to create an object and default values - quickly and efficiently.
 (Preferrably using page layouts).
 
-# Overview
+---
 
 We provide a description in three main areas:
 
-* Quick Actions - the standard to create children off a parent
-* Lightning Actions - a more powerful way to create children - using a bit more code
-* List Buttons - How to create children off a List View.
+* [Quick Actions](#quick-action-demo) - the standard to create children off a parent
+* [Lightning Actions](#lightning-action-demo) - a more powerful way to create children - using a bit more code
+* [List Buttons](#list-button-demo) - How to create children off a List View.
 
 Please see the Deploy section below on how to install the demo.
 
@@ -150,11 +150,11 @@ Finally, we'll need a Lightning Action to use the lightning Component.
 
 To make a Lightning Action version of a URL Hack, we need three things:
 
-* An Apex Controller
-* A Lightning Component
-* A Lightning Action
+* An [Apex Controller](#LA-Apex-Controller)
+* A [Lightning Component](#LA-Lightning-Component)
+* A [Lightning Action](#LA-Lightning-Action)
 
-## Apex Controller
+## LA Apex Controller
 
 The Apex Controller simply provides the [Server Side Action](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/controllers_server_actions_call.htm) for the Lightning Component.
 
@@ -223,7 +223,8 @@ We retrieve the data and simply store it on the attributes of the custom class t
             System.debug(err);
         }
 
-See Implementation - @TODO
+[See Implementation](dx/force-app/main/default/classes/ltng_URLHackComponentCtrl.cls#L17)
+@TODO
 
 #### Serialize and Return
 
@@ -235,7 +236,7 @@ Any attributes marked with [@AuraEnabled are serialized for return to the lightn
 
 See Implementation - @TODO
 
-## Lightning Component
+## LA Lightning Component
 
 The lightning component doesn't really do much. That is more left to the controller (to retrieve the value and send it)
 
@@ -440,7 +441,7 @@ Finally, we fire the event and close our component
 
 		helper.closeWindow();
 
-## Lightning Action
+## LA Lightning Action
 
 Now we have our Lightning Component completed, we just need a Lightning Action (on our Parent record) to display our Lightning Component.
 
@@ -499,11 +500,11 @@ The VisualForce page then does two things:
 
 To make a List View Button, we need three things:
 
-* A VisualForce Controller (to load the defaults)
-* A VisualForce Page (to call the lightning event)
-* A List View Button to expose the VisualForce Page
+* A [VisualForce Controller](#LB-VF-Controller) (to load the defaults)
+* A [VisualForce Page](#LB-VisualForce-Page) (to call the lightning event)
+* A [List View Button](#LB-List-Button) to expose the VisualForce Page
 
-## VF Controller Definition
+## LB VF Controller
 
 The controller is quite simple, and only requires setup in two main areas:
 
@@ -580,7 +581,7 @@ In this case, we simply use the `baseRecordId` sent (available from the params) 
 
 If there is other information, like from custom settings or custom metadata, or from the user, we can get that too.
 
-Please see the implementation for an example - @TODO.
+[Please see the implementation for an example](dx/force-app/main/default/classes/ltng_UrlHackListButtonCtrl.cls#L31)
 
 #### Result Properties to Serialize
 
@@ -590,6 +591,8 @@ Any values we get, we then store on the local class.
 	public CustomSetting__c customSettingInfo;
 
 so we can use `this.resultStr = JSON.serialize(results);`
+
+[Please see the implementation for an example](dx/force-app/main/default/classes/ltng_UrlHackListButtonCtrl.cls#L105)
 
 #### Serialize and return
 
@@ -618,7 +621,7 @@ Because these values are set on a local class, we can converted to JSON (so they
 	etc.
     
     
-## Visualforce Page Definition
+## LB Visualforce Page
 
 Within the Visualforce Page, we should leverage the similar type of styles from the container (Service, Sales, LEX, SalesForce1, etc)
 
@@ -738,7 +741,7 @@ We set a previousOnLoad / window.onLoad to ensure that the page behaves correctl
 	
 We can then expose those default values using [sforce.one.createRecord](https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm)
     
-## List Button Definition
+## LB List Button
 
 After the VisualForce page is complete, we can create the List View button.
 

@@ -70,7 +70,6 @@ To create a Quick Action (Publisher Action):
 Please see the [Create Object-Specific Quick Actions - Trailhead Module](https://trailhead.salesforce.com/en/modules/salesforce1_mobile_app/units/salesforce1_mobile_app_actions_objectspecific) for more information.
 
 Please see the [Quick Action Considerations](https://help.salesforce.com/articleView?id=actions_considerations.htm&type=5) for limitations.
-
 .
 
 .
@@ -145,6 +144,16 @@ As-well as a [closeQuickAction Lightning Event](https://developer.salesforce.com
 #### Lightning Action using the Lightning Component
 
 Finally, we'll need a Lightning Action to use the lightning Component.
+
+## Template files
+
+Please also see the template files for creating new:
+
+All sections to be changed are marked with @CHANGE
+
+* [Lightning Component Controller](CodeTemplates/LightningAction/ComponentController)
+* [Lightning Component](CodeTemplates/LightningAction/LightningComponent)
+
 
 ## Detailed Approach
 
@@ -492,6 +501,14 @@ The VisualForce page then does two things:
 
 **Please see BELOW for more detail**
 
+## Template files
+
+Please also see the template files for creating new:
+
+All sections to be changed are marked with @CHANGE
+
+* [VisualForce Page Controller](CodeTemplates/ListButton/PageController)
+* [Visualforce Page](CodeTemplates/ListButton/VisualForcePage)
 
 ---
 

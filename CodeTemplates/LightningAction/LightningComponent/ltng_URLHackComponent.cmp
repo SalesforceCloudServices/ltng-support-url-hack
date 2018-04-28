@@ -1,0 +1,35 @@
+<!--
+/**
+ * Component that performs similar to a URL Hack (from a Lightning Action)
+ * 
+ * <p>No changes needed here (unless desired). Change needed on ...Helper.js</p>
+ * 
+ * <p>Note: the loading of the data is done in the
+ *   associated controller: ltng_URLHackComponentCtrl</p>
+ * 
+ * @author Your Name
+ * @component: ltng_URLHackComponent
+ **/
+-->
+<aura:component
+    controller="ltng_URLHackComponentCtrl"
+    implements="force:hasRecordId,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction"
+    access="global"
+>
+    <!-- note: it must implement force:hasRecordId
+        so the recordId attribute is automatically filled -->
+    <!-- attributes -->
+    <!-- automatically provided because we implement force:hasRecordId -->
+    <aura:attribute name="recordId" type="String" />
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <!-- data -->
+    <!-- events -->
+    <!-- elements -->
+	<!-- show a spinner while everything loads -->
+    <div class="slds-spinner--brand slds-spinner slds-spinner--small" role="alert">
+        <span class="slds-assistive-text">Loading...</span>
+        <div class="slds-spinner__dot-a"></div>
+        <div class="slds-spinner__dot-b"></div>
+    </div>
+</aura:component>

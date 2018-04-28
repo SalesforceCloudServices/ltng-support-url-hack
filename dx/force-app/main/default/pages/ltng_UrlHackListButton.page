@@ -47,9 +47,11 @@
             if (previousOnload) { previousOnload(); }
             
             console.info('about to create a record');
-            
-            //-- UPDATE ITEMS BELOW
-            
+
+            //--	-	-	-	-	-	-	-	-	-	-	-
+            //-- UPDATE THE LINES BELOW
+            //--	-	-	-	-	-	-	-	-	-	-	-
+
             //-- determine values to provide for default values
             var resultStr = "{! JSENCODE(serializedDefaultValues) }";
             var resultValue = JSON.parse(resultStr);
@@ -90,7 +92,9 @@
 		    //-- sforce.one.createRecord( sObjectName, recordTypeId, objectWithDefaultPropertyValues );
     		sforce.one.createRecord('ltng_URLHackChild__c', recordTypeId, defaultObject );
             
-    		//-- UPDATE ITEMS ABOVE
+            //--	-	-	-	-	-	-	-	-	-	-	-
+            //-- UPDATE THE LINES ABOVE
+            //--	-	-	-	-	-	-	-	-	-	-	-
         }
     </script>
 </apex:page>

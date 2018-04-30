@@ -260,7 +260,7 @@ and the unique API Name of the button (with an optional Description)
 
 #### LA Complete Examples
 
-The entire component can be found [under Lightning Component Template files - for reference](CodeTemplates/LightningAction)
+The entire template can be found [under Lightning Component Template files - for reference](CodeTemplates/LightningAction)
 
 * [apex controller](CodeTemplates/LightningAction/ComponentController/ltng_URLHackComponentCtrl.cls)
 * [component](CodeTemplates/LightningAction/LightningComponent/ltng_URLHackComponent.cmp)
@@ -620,7 +620,7 @@ The VisualForce page then does two things:
 
 **Please see BELOW for more detail**
 
-## Template files
+## LB Template files
 
 Please also see the template files for creating new:
 

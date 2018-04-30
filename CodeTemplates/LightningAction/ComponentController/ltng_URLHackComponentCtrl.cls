@@ -72,6 +72,10 @@ public with sharing class ltng_URLHackComponentCtrl {
         @AuraEnabled
         public YOUR_BASE_SOBJECT_API_NAME__c baseInfo;
         
+        /** Record Type ID that the new child should use **/
+        @AuraEnabled
+        public Id childRecordTypeId;
+        
         //-- add in any other properties here
 
         //--	-	-	-	-	-	-	-	-	-	-	-

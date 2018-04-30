@@ -151,9 +151,98 @@ Please also see the template files for creating new:
 
 All sections to be changed are marked with @CHANGE
 
-* [Lightning Component Controller](CodeTemplates/LightningAction/ComponentController)
-* [Lightning Component](CodeTemplates/LightningAction/LightningComponent)
+#### Create an Apex Class for the Controller
 
+Open the Developer Console (so that we can create a new Apex Class
+
+![Developer Console Open](docs/images/developerConsole1.png)
+
+Then select File > New > Apex Class
+
+![Create new Apex Class](docs/images/NewLightningComponentClass.png)
+
+Then copy and paste the code from the [Lightning Action Controller template code](CodeTemplates/LightningAction/ComponentController/ltng_URLHackComponentCtrl.cls)
+
+Note the `@CHANGE` sections and make the appropriate changes.
+
+<table><tr><th>Placeholder</th><th>Description</th><th>Example</th></tr>
+<tr><td colspan='3'><b>Change 1 - Retrieve the base object info - to use for default values</b></td></tr>
+<tr><td>YOUR_BASE_SOBJECT_API_NAME__c</td><td>the API Name of the base SObject</td><td>ex: Account or CustomObject__c</td></tr>
+<tr><td>YOUR_FIELD_API_NAME__c</td><td>the API Names of the fields to retrieve</td><td>ex: CustomField__c</td></tr>
+<tr><td colspan='3'><b>Change 2 - Determine the RecordTypeId to use for the new object</b></td></tr>
+<tr><td>NEW_OBJECT_API_NAME__c</td><td>the API Name of SObject the new record should be</td><td>ex: Opportunity, or ChildObject__c</td></tr>
+<tr><td>YOUR_RECORDTYPE_NAME</td><td>the NAME of the record type to use</td><td>ex: Extended or FieldService</td></tr>
+<tr><td colspan='3'><b>Change 3 - create @AuraEnabled public properties for the info to be used in defaulting</b></td></tr>
+<tr><td>YOUR_BASE_SOBJECT_API_NAME__c</td><td>the API Name of the base SObject</td><td>ex: Account or CustomObject__c</td></tr>
+<tr><td>Any Other Properties</td><td>Using a similar definition, other properties</td><td>@AuraEnabled <br /> public String userLastName;</td></tr>
+</table>
+
+#### Create a new Lightning Component
+
+![New Lightning Component Screen](docs/images/NewLightningActionComponent.png)
+
+Enter in a name for the component (without spaces), and apply a description.
+
+**The component must be available within the Quick Action, but the template file below specifies this for you**
+
+#### Fill in the Component File
+
+Copy and paste the code from the [Lightning Component File](CodeTemplates/LightningAction/LightningComponent/ltng_URLHackComponent.cmp)
+
+Address any sections that have `@CHANGE.` <br /> (At the time of this writing there is none)
+
+#### Fill in the Component Controller
+
+Then select `Controller` and paste the code from [Lightning Component Controller](CodeTemplates/LightningAction/LightningComponent/ltng_URLHackComponentController.js)
+
+![New Lightning Component Controller](docs/images/NewLightningActionController.png)
+
+Address any sections that have `@CHANGE`. <br /> (At the time of this writing there is none)
+
+#### Fill in the Component Helper
+
+Then select `Helper` and paste the code from [Lightning Component Helper]()
+
+![New Lightning Component Helper](docs/images/NewLightningActionHelper.png)
+
+Address any sections that have `@CHANGE`, and make the appropriate changes.
+
+<table><tr><th>Placeholder</th><th>Description</th><th>Example</th></tr>
+<tr><td colspan='3'><b>Change 1 - get the fields from the base object</b></td></tr>
+<tr><td>Any other defaults</td><td>Add any additional fields to use for defaults</td><td>var userLastName = resultValue.userLastName;</td></tr>
+<tr><td colspan='3'><b>Change 2 - default the values</b></td></tr>
+<tr><td>NEW_SOBJECT_API_NAME__c</td><td>the API Name of the type of object to create</td><td>ex: Account, CustomObject__c</td></tr>
+<tr><td>TARGET_RECORD_TYPE</td><td>the NAME of the RecordType to use when creating the new record</td><td>ex: Extended or FieldService</td></tr>
+<tr><td>FIELD_TO_DEFAULT_API_NAME__c</td><td>the API name of the field to default</td><td>ex: Name or CustomDescription__c</td></tr>
+<tr><td>DEFAULT_VALUE</td><td>the value to default</td><td>the variable from above</td></tr>
+</table>
+
+#### Finally - Create a New Action
+
+To create a new Action, open `Setup` under the Gear at the top-right of Lightning Experience.
+
+![Open Setup](docs/images/OpenSetup.png)
+
+Then Select `Buttons, Links and Actions`, and specify `New Action`
+
+![New Lightning Action](docs/images/NewLightningAction.png)
+
+Specify that we will use a Lightning Component, <br />
+and specify the Lightning Component we just made.
+
+Define the height of the initial window <br />
+but can be left to 250px, as this is only for the loading spinner in our case.
+
+Specify the Label of the button (what you will see to select the button)
+and the unique API Name of the button (with an optional Description) 
+
+![New Lightning Action Edit Screen](docs/images/NewLightningAction2.png)
+
+The entire component can be found [under Lightning Component Template files - for reference](CodeTemplates/LightningAction/LightningComponent)
+
+**Don't forget to add the button to your Page Layout**
+
+![Add Button to the Page Layout](docs/images/NewLightningAction3.png)
 
 ## Detailed Approach
 
@@ -506,6 +595,14 @@ The VisualForce page then does two things:
 Please also see the template files for creating new:
 
 All sections to be changed are marked with @CHANGE
+
+<table><tr><th>Placeholder</th><th>Description</th><th>Example</th></tr>
+<tr><td colspan='3'><b>Change 1 - </b></td></tr>
+<tr><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td></tr>
+</table>
 
 * [VisualForce Page Controller](CodeTemplates/ListButton/PageController)
 * [Visualforce Page](CodeTemplates/ListButton/VisualForcePage)

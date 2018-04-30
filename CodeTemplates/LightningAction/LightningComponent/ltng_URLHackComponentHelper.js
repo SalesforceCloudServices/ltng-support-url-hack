@@ -21,9 +21,9 @@
 		
 		//-- determine the values to use for defaulting
 		var newObjectApiName = 'NEW_SOBJECT_API_NAME__c';
-		var recordTypeId = resultValue.childRecordTypeId;
 		var baseRecordId = resultValue.baseInfo.Id;
-		var childName = resultValue.baseInfo.Name;
+		var recordTypeId = resultValue.childRecordTypeId;
+		
 		//-- add any additional fields here
 		
 		//-- examples:

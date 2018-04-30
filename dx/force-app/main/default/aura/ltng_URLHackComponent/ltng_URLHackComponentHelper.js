@@ -21,9 +21,9 @@
 		
 		//-- determine the values to use for defaulting
 		var newObjectApiName = 'ltng_URLHackChild__c';
+		var baseRecordId = resultValue.baseInfo.Id;
 		var recordTypeId = resultValue.childRecordTypeId;
 
-		var baseRecordId = resultValue.baseInfo.Id;
 		var childName = resultValue.baseInfo.Name + ' Child';
 		var childDescription = resultValue.baseInfo.CustomDescription__c;
 		var childCheckbox = resultValue.baseInfo.SampleCheckbox__c;

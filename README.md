@@ -1097,7 +1097,7 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 ...
 
 Thats it, you can now open the org, <br />
-and find the 'URL Hack Base' lightning app <br />
+and find the 'URL Hack Demo' lightning app <br />
 and sample 'URL Hack Base' tab / records.
 
 	sfdx force:org:open -u [[orgAlias]]

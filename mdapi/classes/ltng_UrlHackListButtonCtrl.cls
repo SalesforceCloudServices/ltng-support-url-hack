@@ -24,28 +24,15 @@ public class ltng_UrlHackListButtonCtrl {
         String serializedResults;
 
 
-
-
-
-
         //--	-	-	-	-	-	-	-	-	-	-	-
         //-- UPDATE THE LINES BELOW
         //--	-	-	-	-	-	-	-	-	-	-	-
 
         //-- retrieve all the info you need to default
-
-        //-- recordTypeIds are needed if there are multiple
-        //-- 
-        //-- Schema.SObjectType.SOBJECT_NAME.getRecordTypeInfosByName()
-        //--    .get('RECORD_TYPE_NAME').getRecordTypeId();
-        //-- 
-        //-- in this case, we want the ltng_UrlHackChild__c SOBJECT_NAME
-        //-- and Extended RECORD_TYPE_NAME
-
-        results.recordTypeId = Schema.SObjectType.ltng_UrlHackChild__c
-            .getRecordTypeInfosByName().get('Extended').getRecordTypeId();
         
-        //-- fetch the base object info
+        //-- @CHANGE: Retrieve the base object info - to use for default values.
+        //-- replace YOUR_BASE_SOBJECT_API_NAME__c with the API Name of the base SObject (ex: Account or CustomObject__c)
+        //-- replace YOUR_FIELD_API_NAME__c with the customFields to retrieve (ex: CustomField__c)
         try {
             results.baseInfo = [SELECT Id, Name, CustomDescription__c,
                 	SampleCheckbox__c, SampleDate__c, SampleNumber__c,
@@ -58,6 +45,16 @@ public class ltng_UrlHackListButtonCtrl {
             System.debug('exception when fetching the base record');
             System.debug(err);
         }
+
+        //-- @CHANGE: Determine the RecordTypeId to use for the new object
+        //-- replace YOUR_SOBJECT_NAME with with the API Name of SObject the new record should be (ex: Opportunity, or ChildObject__c)
+        //-- replace YOUR_RECORDTYPE_NAME with the NAME of the record type to use (ex: Extended or FieldService)
+
+        //-- the following line has the format:
+        //-- Schema.SObjectType.YOUR_SOBJECT_NAME.getRecordTypeInfosByName().get('YOUR_RECORDTYPE_NAME').getRecordTypeId();
+
+        results.recordTypeId = Schema.SObjectType.ltng_UrlHackChild__c
+            .getRecordTypeInfosByName().get('Extended').getRecordTypeId();
                 
         //-- optional fetch the user information
         results.currentUserLastName = UserInfo.getLastName();
@@ -86,13 +83,6 @@ public class ltng_UrlHackListButtonCtrl {
         //--	-	-	-	-	-	-	-	-	-	-	-
         //-- UPDATE THE LINES ABOVE
         //--	-	-	-	-	-	-	-	-	-	-	-
-        
-
-
-
-
-
-
 
         this.serializedDefaultValues = JSON.serialize(results);
     }
@@ -101,10 +91,14 @@ public class ltng_UrlHackListButtonCtrl {
     public class UrlHackDefaultValues {
 
 
-
         //--	-	-	-	-	-	-	-	-	-	-	-
         //-- UPDATE THE LINES BELOW
         //--	-	-	-	-	-	-	-	-	-	-	-
+        
+        //-- @CHANGE: create public properties for the info to be used in defaulting
+        //--    This can be for the entire object (like this example)
+        //--    or simple values (like the Last Name of the person that created the record)
+        //-- replace YOUR_BASE_SOBJECT_API_NAME__c with the API Name of the base SObject (ex: Account or CustomObject__c)
         
         /** base info you want to return **/
         public ltng_URLHackBase__c baseInfo;

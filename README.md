@@ -145,7 +145,7 @@ As-well as a [closeQuickAction Lightning Event](https://developer.salesforce.com
 
 Finally, we'll need a Lightning Action to use the lightning Component.
 
-## Template files
+## LA Template files
 
 Please also see the template files for creating new:
 
@@ -176,6 +176,8 @@ Note the `@CHANGE` sections and make the appropriate changes.
 <tr><td>YOUR_BASE_SOBJECT_API_NAME__c</td><td>the API Name of the base SObject</td><td>ex: Account or CustomObject__c</td></tr>
 <tr><td>Any Other Properties</td><td>Using a similar definition, other properties</td><td>@AuraEnabled <br /> public String userLastName;</td></tr>
 </table>
+
+[Please see here for a completed example](dx/force-app/main/default/classes/ltng_URLHackComponentCtrl.cls)
 
 #### Create a new Lightning Component
 
@@ -225,6 +227,8 @@ Address any sections that have `@CHANGE`, and make the appropriate changes.
 <tr><td>DEFAULT_VALUE</td><td>the value to default</td><td>the variable from above</td></tr>
 </table>
 
+[Please see here for a completed example](dx/force-app/main/default/aura/ltng_URLHackComponent/ltng_URLHackComponentHelper.js)
+
 #### Finally - Create a New Action
 
 To create a new Action, open `Setup` under the Gear at the top-right of Lightning Experience.
@@ -254,7 +258,23 @@ and the unique API Name of the button (with an optional Description)
 
 ![Add Button to the Page Layout](docs/images/NewLightningAction3.png)
 
+#### LA Complete Examples
+
 The entire component can be found [under Lightning Component Template files - for reference](CodeTemplates/LightningAction)
+
+* [apex controller](CodeTemplates/LightningAction/ComponentController/ltng_URLHackComponentCtrl.cls)
+* [component](CodeTemplates/LightningAction/LightningComponent/ltng_URLHackComponent.cmp)
+  * [controller](CodeTemplates/LightningAction/LightningComponent/ltng_URLHackComponentController.js)
+  * [helper](CodeTemplates/LightningAction/LightningComponent/ltng_URLHackComponentHelper.js)
+
+A completed example of the component can be found here:
+
+* [apex controller](dx/force-app/main/default/classes/ltng_URLHackComponentCtrl.cls)
+* [component](dx/force-app/main/default/aura/ltng_URLHackComponent/ltng_URLHackComponent.cmp)
+  * [controller](dx/force-app/main/default/aura/ltng_URLHackComponent/ltng_URLHackComponentController.js)
+  * [helper](dx/force-app/main/default/aura/ltng_URLHackComponent/ltng_URLHackComponentHelper.js)
+
+
 
 ## Detailed Approach
 
@@ -620,8 +640,6 @@ Then copy and paste the code from the [Lightning Action Controller template code
 
 Note the `@CHANGE` sections and make the appropriate changes.
 
-@TODO: link the changes to specific sections in github repo
-
 <table><tr><th>Placeholder</th><th>Description</th><th>Example</th></tr>
 <tr><td colspan='3'><b>Change 1 - Retrieve the base object info - to use for default values</b></td></tr>
 <tr><td>YOUR_BASE_SOBJECT_API_NAME__c</td><td>the API Name of the base SObject</td><td>ex: Account or CustomObject__c</td></tr>
@@ -686,6 +704,20 @@ Specify that we will `Display in Existing window with sidebar`, and the List But
 ![Add Button to the Page Layout](docs/images/NewLightningAction3.png)
 
 The entire component can be found [under Lightning Component Template files - for reference](CodeTemplates/ListButton)
+
+---
+
+#### LB Complete Examples
+
+The entire template can be found [under Lightning Component Template files - for reference](CodeTemplates/ListButton)
+
+* [apex controller](CodeTemplates/ListButton/PageController/ltng_UrlHackListButtonCtrl.cls)
+* [visualforce page](CodeTemplates/ListButton/VisualForcePage/ltng_UrlHackListButton.page)
+
+A completed example of the component can be found here:
+
+* [apex controller](dx/force-app/main/default/classes/ltng_UrlHackListButtonCtrl.cls)
+* [visualforce page](dx/force-app/main/default/pages/ltng_UrlHackListButton.page)
 
 
 ---
@@ -977,7 +1009,11 @@ This works very similar to an App Exchange install.
 
 Please login to an available sandbox and click the link below.
 
-[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZgQAI](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqZgQAI)
+[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA)
+
+https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA
+
+https://saas-connect-9554-dev-ed.lightning.force.com/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA
 
 #### Once the install is complete
 
@@ -1073,4 +1109,8 @@ Feel free to create your own and to create children through the QuickActions, Li
 
 To install via the metadata api, simply zip the mdapi folder and deploy using the [Metadata Migration Toolkit](https://developer.salesforce.com/docs/atlas.en-us.daas.meta/daas/) or the [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli).
 
+--
 
+# TODO
+
+@TODO: discuss if linking directly to change lines in github would be helpful.

@@ -132,4 +132,10 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
 </CustomObject>

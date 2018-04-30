@@ -8,6 +8,11 @@
  * @component: ltng_URLHackComponent
  **/
 -->
+<!--
+//- @CHANGE: If you use a different class than ltng_URLHackComponentCtrl
+//-     then set controller="LIGHTNING_CONTROLLER_NAME"
+//-     where LIGHTNING_CONTROLLER_NAME - Name of the Apex Class controller just made (ex: ltng_URLHackComponentCtrl)
+-->
 <aura:component
     controller="ltng_URLHackComponentCtrl"
     implements="force:hasRecordId,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction"

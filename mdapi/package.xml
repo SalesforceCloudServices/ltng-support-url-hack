@@ -12,6 +12,7 @@
     <name>ApexClass</name>
     <members>ltng_URLHackComponentCtrl</members>
     <members>ltng_UrlHackListButtonCtrl</members>
+    <members>ltng_UrlHackPostInstall</members>
   </types>
   <types>
     <name>ContentAsset</name>
@@ -20,7 +21,6 @@
   <types>
     <name>CustomMetadata</name>
     <members>ltng_URLHackCustomMetadata.ExampleCustomMetadata</members>
-    <members>ltng_URLHackExampleMetadata.ExampleMetadata</members>
   </types>
   <types>
     <name>FlexiPage</name>
@@ -70,6 +70,10 @@
   <types>
     <name>WebLink</name>
     <members>ltng_URLHackChild__c.VF_Lightning</members>
+  </types>
+  <types>
+    <name>ListView</name>
+    <members>ltng_UrlHackBase__c.All</members>
   </types>
   <types>
     <name>ApexPage</name>

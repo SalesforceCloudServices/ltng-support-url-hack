@@ -50,6 +50,8 @@ public with sharing class ltng_URLHackComponentCtrl {
         results.childRecordTypeId = Schema.SObjectType.NEW_OBJECT_API_NAME__c
             .getRecordTypeInfosByName().get('YOUR_RECORDTYPE_NAME').getRecordTypeId();
 
+        //-- any other Selects or data needed
+
         //--	-	-	-	-	-	-	-	-	-	-	-
         //-- UPDATE THE LINES ABOVE
         //--	-	-	-	-	-	-	-	-	-	-	-

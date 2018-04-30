@@ -19,7 +19,11 @@ public with sharing class ltng_URLHackComponentCtrl {
         //-- UPDATE THE LINES BELOW
         //--	-	-	-	-	-	-	-	-	-	-	-
 
-        //-- get the base object info
+        //-- retrieve all the info you need to default
+
+        //-- @CHANGE: Retrieve the base object info - to use for default values.
+        //-- replace YOUR_BASE_SOBJECT_API_NAME__c with the API Name of the base SObject (ex: Account or CustomObject__c)
+        //-- replace YOUR_FIELD_API_NAME__c with the API Names of the fields to retrieve (ex: CustomField__c)
         try {
             results.baseInfo = [
                 SELECT Id, Name, CustomDescription__c,
@@ -34,9 +38,13 @@ public with sharing class ltng_URLHackComponentCtrl {
             System.debug(err);
         }
 
-        //-- get the record type that the child should be
-        //-- Schema.SObjectType.SOBJECT_NAME.getRecordTypeInfosByName().get('RECORD_TYPE_NAME').getRecordTypeId();
+        //-- @CHANGE: Determine the RecordTypeId to use for the new object
+        
+        //-- the following line has the format:
+        //-- Schema.SObjectType.NEW_OBJECT_API_NAME__c.getRecordTypeInfosByName().get('YOUR_RECORDTYPE_NAME').getRecordTypeId();
 
+        //-- replace NEW_OBJECT_API_NAME__c with with the API Name of SObject the new record should be (ex: Opportunity, or ChildObject__c)
+        //-- replace YOUR_RECORDTYPE_NAME with the NAME of the record type to use (ex: Extended or FieldService)
         results.childRecordTypeId = Schema.SObjectType.ltng_UrlHackChild__c
             .getRecordTypeInfosByName().get('Extended').getRecordTypeId();
         
@@ -75,6 +83,12 @@ public with sharing class ltng_URLHackComponentCtrl {
         //--	-	-	-	-	-	-	-	-	-	-	-
         //-- UPDATE THE LINES BELOW
         //--	-	-	-	-	-	-	-	-	-	-	-
+        
+        //-- @CHANGE: create @AuraEnabled public properties for the info to be used in defaulting
+        //--    This can be for the entire object (like this example)
+        //--    or simple values (like the Last Name of the person that created the record)
+        //-- replace YOUR_BASE_SOBJECT_API_NAME__c with the API Name of the base SObject (ex: Account or CustomObject__c)
+        
         /** base info you want to return **/
         @AuraEnabled
         public ltng_URLHackBase__c baseInfo;
@@ -94,6 +108,7 @@ public with sharing class ltng_URLHackComponentCtrl {
         /** custom metadata values **/
         @AuraEnabled
         public ltng_URLHackCustomMetadata__mdt customMetadataInfo;
+        
         //--	-	-	-	-	-	-	-	-	-	-	-
         //-- UPDATE THE LINES ABOVE
         //--	-	-	-	-	-	-	-	-	-	-	-

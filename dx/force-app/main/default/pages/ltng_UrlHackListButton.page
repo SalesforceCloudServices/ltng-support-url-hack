@@ -4,6 +4,12 @@
  * @page ltng_URLHackListButton
  */
 -->
+<!--
+ //-- CHANGE: set the standardController
+ //-- replace NEW_OBJECT_API_NAME__c with the API Name of SObject the new record should be (ex: Opportunity, or ChildObject__c)
+ //-- (if another apex class was used instead of ltng_UrlHackListButtonCtrl)
+        replace the extensions value with the name of your new class.
+-->        
 <apex:page standardController="ltng_URLHackChild__c" extensions="ltng_UrlHackListButtonCtrl"
     recordSetVar="customChildren"
     standardStylesheets="false" showHeader="false" sidebar="false"
@@ -48,15 +54,20 @@
             
             console.info('about to create a record');
 
-            //--	-	-	-	-	-	-	-	-	-	-	-
-            //-- UPDATE THE LINES BELOW
-            //--	-	-	-	-	-	-	-	-	-	-	-
-
             //-- determine values to provide for default values
             var resultStr = "{! JSENCODE(serializedDefaultValues) }";
             var resultValue = JSON.parse(resultStr);
 
+            //--	-	-	-	-	-	-	-	-	-	-	-
+            //-- UPDATE THE LINES BELOW
+            //--	-	-	-	-	-	-	-	-	-	-	-
+
+            //-- @CHANGE: get the values to use for default
+            //-- replace NEW_SOBJECT_API_NAME__c with the API Name of the type of object to create (ex: Account, CustomObject__c)
+            //-- add in any other values to use for defaults
+
             //-- get the default values
+            var newObjectApiName = 'ltng_URLHackChild__c';
             var recordTypeId = resultValue.recordTypeId;
             var baseRecordId = resultValue.baseInfo.Id;
             var childName = resultValue.baseInfo.Name + ' Child';
@@ -69,9 +80,7 @@
             var customSettingValue = resultValue.customMetadataInfo.MetadataValue__c;
             var customMetadataValue = resultValue.customSettingInfo.CustomSettingValue__c;
 
-            //-- sforce.one.createRecord( ObjectType, RecordType, defaultField Values)
-            //-- see here for more information
-            //-- https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
+            //-- @CHANGE: set those default values to the Field API Names
             
             var defaultObject = {
                 'URLHackBase__c': baseRecordId,
@@ -86,15 +95,16 @@
                 'CustomMetadataValue__c': customMetadataValue
             };
             
-            //-- for example: optionally add in properties as needed;
-    		//-- see here for more info:
-    		//-- https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
-		    //-- sforce.one.createRecord( sObjectName, recordTypeId, objectWithDefaultPropertyValues );
-    		sforce.one.createRecord('ltng_URLHackChild__c', recordTypeId, defaultObject );
-            
             //--	-	-	-	-	-	-	-	-	-	-	-
             //-- UPDATE THE LINES ABOVE
             //--	-	-	-	-	-	-	-	-	-	-	-
+            
+            //-- the following line uses this format:
+            //-- sforce.one.createRecord( sObjectName, recordTypeId, objectWithDefaultPropertyValues );
+    		//-- see here for more information
+            //-- https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
+            
+            sforce.one.createRecord(newObjectApiName, recordTypeId, defaultObject );
         }
     </script>
 </apex:page>

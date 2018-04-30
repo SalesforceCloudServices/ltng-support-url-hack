@@ -59,6 +59,10 @@
             
             console.info('about to create a record');
             
+            //-- determine values to provide for default values
+            var resultStr = "{! JSENCODE(serializedDefaultValues) }";
+            var resultValue = JSON.parse(resultStr);
+
             //--	-	-	-	-	-	-	-	-	-	-	-
             //-- UPDATE THE LINES BELOW
             //--	-	-	-	-	-	-	-	-	-	-	-
@@ -84,10 +88,9 @@
             // var customSettingValue = resultValue.customMetadataInfo.MetadataValue__c;
             // var customMetadataValue = resultValue.customSettingInfo.CustomSettingValue__c;
 
-
-
+            
             //-- @CHANGE: set those default values to the Field API Names
-
+            
             var defaultObject = {
                 'FIELD_TO_DEFAULT_API_NAME__c': DEFAULT_VALUE,
                 //-- other fields 
@@ -108,7 +111,7 @@
             //--	-	-	-	-	-	-	-	-	-	-	-
             //-- UPDATE THE LINES ABOVE
             //--	-	-	-	-	-	-	-	-	-	-	-
-            
+
             //-- the following line uses this format:
             //-- sforce.one.createRecord( sObjectName, recordTypeId, objectWithDefaultPropertyValues );
     		//-- see here for more information

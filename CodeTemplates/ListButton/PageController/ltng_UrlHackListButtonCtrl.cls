@@ -75,7 +75,7 @@ public class ltng_UrlHackListButtonCtrl {
         //-- UPDATE THE LINES BELOW
         //--	-	-	-	-	-	-	-	-	-	-	-
         
-        //-- @CHANGE: create @AuraEnabled public properties for the info to be used in defaulting
+        //-- @CHANGE: create public properties for the info to be used in defaulting
         //--    This can be for the entire object (like this example)
         //--    or simple values (like the Last Name of the person that created the record)
         //-- replace YOUR_BASE_SOBJECT_API_NAME__c with the API Name of the base SObject (ex: Account or CustomObject__c)

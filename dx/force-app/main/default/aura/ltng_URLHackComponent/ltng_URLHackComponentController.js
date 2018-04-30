@@ -1,5 +1,11 @@
 ({
 	/**
+	 * Controller for the Component.
+	 * 
+	 * <p>No changes needed here (unless desired). Change needed on ...Helper.js</p>
+	 */
+	
+	/**
 	 * Initialization method
 	 */
 	init : function(component, event, helper) {

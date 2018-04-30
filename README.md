@@ -1043,6 +1043,8 @@ This assumes you have already installed the [Salesforce CLI]() and [Connected th
 
 However, the Salesforce CLI can be used with any org and does not require Salesforce DX to be enabled. (Although enabling the DX / Dev Hub would give some great benefits, and would only require care of [certain object permissions: Scratch Org Info, ActiveScratchOrg, NamespaceRegistry](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_add_users.htm) - as they are not available in all orgs)
 
+(cd into the `dx` directory)
+
 **1.** Run the following command:
 
 	sfdx force:source:push -u [[orgAlias]]
@@ -1053,9 +1055,9 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 	
 **3.** Upload the data
 
-	sfdx force:data:tree:import -p data/trees/ltng_UrlHackBase__c-plan.json
+	sfdx force:data:tree:import -p ../data/trees/ltng_UrlHackBase__c-plan.json
 	
-	sfdx force:data:tree:import -p data/trees/ltng_URLHackCustomSetting__c-plan.json
+	sfdx force:data:tree:import -p ../data/trees/ltng_URLHackCustomSetting__c-plan.json
 	
 ...
 

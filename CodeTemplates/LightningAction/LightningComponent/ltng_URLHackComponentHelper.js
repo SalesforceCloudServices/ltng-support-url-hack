@@ -15,10 +15,12 @@
         //-- UPDATE THE LINES BELOW
 		//--	-	-	-	-	-	-	-	-	-	-	-
 		
-		//-- @CHANGE: get the fields from the base object
-		//-- 
+		//-- @CHANGE: get the values to use for default
+		//-- replace NEW_SOBJECT_API_NAME__c with the API Name of the type of object to create (ex: Account, CustomObject__c)
+		//-- add in any other values to use for defaults
 		
 		//-- determine the values to use for defaulting
+		var newObjectApiName = 'NEW_SOBJECT_API_NAME__c';
 		var recordTypeId = resultValue.childRecordTypeId;
 		var baseRecordId = resultValue.baseInfo.Id;
 		var childName = resultValue.baseInfo.Name;
@@ -34,15 +36,30 @@
 		// var customSettingValue = resultValue.customMetadataInfo.MetadataValue__c;
 		// var customMetadataValue = resultValue.customSettingInfo.CustomSettingValue__c;
 
-
-
 		//-- @CHANGE: default the values
-		//-- replace NEW_SOBJECT_API_NAME__c with the API Name of the type of object to create (ex: Account, CustomObject__c)
-		//-- replace TARGET_RECORD_TYPE with the NAME of the RecordType to use when creating the new record. (ex: Extended or FieldService)
-
 		//-- replace FIELD_TO_DEFAULT_API_NAME__c with the API name of the field to default (ex: Name or CustomDescription__c)
 		//-- replace DEFAULT_VALUE as the value to default - the variable from above
+		var defaultValues = {
+			'FIELD_TO_DEFAULT_API_NAME__c': DEFAULT_VALUE,
+			//-- other fields 
 
+			//-- examples:
+			//'BaseRecord__c': baseRecordId,
+			//'Name': childName,
+			//'CustomDescription__c': childDescription,
+			//'CreatedByUserLastName__c': createdByUserLastName,
+			//'CustomSettingValue__c': customSettingValue,
+			//'CustomMetadataValue__c': customMetadataValue,
+			//'SampleCheckbox__c': childCheckbox,
+			//'SampleNumber__c': childNumber,
+			//'SampleDate__c': childDate,
+			//'SamplePicklist__c': childPicklist
+		};
+
+		//--	-	-	-	-	-	-	-	-	-	-	-
+		//-- UPDATE THE LINES ABOVE
+		//--	-	-	-	-	-	-	-	-	-	-	-
+		
 		//-- the following uses this format:
 
 		//-- call force:createRecord
@@ -58,28 +75,10 @@
 
 		var createRecordEvent = $A.get("e.force:createRecord");
 		createRecordEvent.setParams({
-			'entityApiName': 'NEW_SOBJECT_API_NAME__c',
+			'entityApiName': newObjectApiName,
 			'recordTypeId': recordTypeId,
-			'defaultFieldValues': {
-				'FIELD_TO_DEFAULT_API_NAME__c': DEFAULT_VALUE,
-				//-- other fields 
-
-				//-- examples:
-				//'BaseRecord__c': baseRecordId,
-				//'Name': childName,
-				//'CustomDescription__c': childDescription,
-				//'CreatedByUserLastName__c': createdByUserLastName,
-				//'CustomSettingValue__c': customSettingValue,
-				//'CustomMetadataValue__c': customMetadataValue,
-				//'SampleCheckbox__c': childCheckbox,
-				//'SampleNumber__c': childNumber,
-				//'SampleDate__c': childDate,
-				//'SamplePicklist__c': childPicklist
-			}
+			'defaultFieldValues': defaultValues
 		});
-		//--	-	-	-	-	-	-	-	-	-	-	-
-		//-- UPDATE THE LINES ABOVE
-		//--	-	-	-	-	-	-	-	-	-	-	-
 
 		createRecordEvent.fire();
 

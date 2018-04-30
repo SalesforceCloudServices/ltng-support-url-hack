@@ -26,8 +26,8 @@ public with sharing class ltng_URLHackComponentCtrl {
         //-- retrieve all the info you need to default
 
         //-- @CHANGE: Retrieve the base object info - to use for default values.
-        //-- replace YOUR_FIELD_API_NAME__c with the customFields to retrieve (ex: CustomField__c)
         //-- replace YOUR_BASE_SOBJECT_API_NAME__c with the API Name of the base SObject (ex: Account or CustomObject__c)
+        //-- replace YOUR_FIELD_API_NAME__c with the API Names of the fields to retrieve (ex: CustomField__c)
         try {
             results.baseInfo = [
                 SELECT Id, Name, YOUR_FIELD_API_NAME__c, YOUR_FIELD_API_NAME__c, ....

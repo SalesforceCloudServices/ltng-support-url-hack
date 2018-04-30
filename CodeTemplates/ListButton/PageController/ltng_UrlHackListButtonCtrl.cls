@@ -27,10 +27,6 @@ public class ltng_UrlHackListButtonCtrl {
         String serializedResults;
 
 
-
-
-
-
         //--	-	-	-	-	-	-	-	-	-	-	-
         //-- UPDATE THE LINES BELOW
         //--	-	-	-	-	-	-	-	-	-	-	-
@@ -38,8 +34,8 @@ public class ltng_UrlHackListButtonCtrl {
         //-- retrieve all the info you need to default
 
         //-- @CHANGE: Retrieve the base object info - to use for default values.
-        //-- replace YOUR_FIELD_API_NAME__c with the customFields to retrieve (ex: CustomField__c)
         //-- replace YOUR_BASE_SOBJECT_API_NAME__c with the API Name of the base SObject (ex: Account or CustomObject__c)
+        //-- replace YOUR_FIELD_API_NAME__c with the customFields to retrieve (ex: CustomField__c)
         try {
             results.baseInfo = [
                 SELECT Id, Name, YOUR_FIELD_API_NAME__c, YOUR_FIELD_API_NAME__c, ....
@@ -85,11 +81,9 @@ public class ltng_UrlHackListButtonCtrl {
         //-- replace YOUR_BASE_SOBJECT_API_NAME__c with the API Name of the base SObject (ex: Account or CustomObject__c)
         
         /** base info you want to return **/
-        @AuraEnabled
         public YOUR_BASE_SOBJECT_API_NAME__c baseInfo;
         
         /** Record Type ID that the new child should use **/
-        @AuraEnabled
         public Id childRecordTypeId;
         
         //-- add in any other properties here

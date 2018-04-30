@@ -153,7 +153,7 @@ All sections to be changed are marked with @CHANGE
 
 #### Create an Apex Class for the Controller
 
-Open the Developer Console (so that we can create a new Apex Class
+Open the Developer Console (so that we can create a new Apex Class)
 
 ![Developer Console Open](docs/images/developerConsole1.png)
 
@@ -179,9 +179,17 @@ Note the `@CHANGE` sections and make the appropriate changes.
 
 #### Create a new Lightning Component
 
-![New Lightning Component Screen](docs/images/NewLightningActionComponent.png)
+Within the Developer Console...
+
+![Developer Console Open](docs/images/developerConsole1.png)
+
+Select File > New > Lightning Component
+
+![New Lightning Component from Console](docs/images/NewLightningComponentFromConsole.png)
 
 Enter in a name for the component (without spaces), and apply a description.
+
+![New Lightning Component Screen](docs/images/NewLightningActionComponent.png)
 
 **The component must be available within the Quick Action, but the template file below specifies this for you**
 
@@ -201,7 +209,7 @@ Address any sections that have `@CHANGE`. <br /> (At the time of this writing th
 
 #### Fill in the Component Helper
 
-Then select `Helper` and paste the code from [Lightning Component Helper]()
+Then select `Helper` and paste the code from [Lightning Component Helper](CodeTemplates/LightningAction/LightningComponent/ltng_URLHackComponentHelper.js)
 
 ![New Lightning Component Helper](docs/images/NewLightningActionHelper.png)
 
@@ -223,6 +231,10 @@ To create a new Action, open `Setup` under the Gear at the top-right of Lightnin
 
 ![Open Setup](docs/images/OpenSetup.png)
 
+Then select `Object Manager` and select the Base SObject (you will create the new record FROM)
+
+![Select the Base SObject from Object Manager](docs/images/SelectBaseFromObjectManager.png)
+
 Then Select `Buttons, Links and Actions`, and specify `New Action`
 
 ![New Lightning Action](docs/images/NewLightningAction.png)
@@ -238,11 +250,11 @@ and the unique API Name of the button (with an optional Description)
 
 ![New Lightning Action Edit Screen](docs/images/NewLightningAction2.png)
 
-The entire component can be found [under Lightning Component Template files - for reference](CodeTemplates/LightningAction/LightningComponent)
-
 **Don't forget to add the button to your Page Layout**
 
 ![Add Button to the Page Layout](docs/images/NewLightningAction3.png)
+
+The entire component can be found [under Lightning Component Template files - for reference](CodeTemplates/LightningAction)
 
 ## Detailed Approach
 
@@ -565,9 +577,7 @@ Currently, this can only be done through a VisualForce page related list button.
 
 ![Related List Demo](docs/images/listButtonDemo.gif)
 
-**Please Note: Generally this is not recommended, as certain cases are not well covered, such as there is no handler for a cancelled create. Leaving the user with a Lightning Button - to return.**
-	
-**This does not happen with either the QuickActions or Lightning Actions.**
+**Please Note: Generally this is not recommended, as certain cases are not well covered, such as there is no handler for a cancelled create. Leaving the user with a Lightning Button - to return... This does not happen with either the QuickActions or Lightning Actions.**
 	
 ![List Button Cancel](docs/images/listButtonCancel.gif)
 
@@ -596,16 +606,87 @@ Please also see the template files for creating new:
 
 All sections to be changed are marked with @CHANGE
 
+#### Create an Apex Class for the Controller
+
+Open the Developer Console (so that we can create a new Apex Class)
+
+![Developer Console Open](docs/images/developerConsole1.png)
+
+Then select File > New > Apex Class
+
+![Create new Apex Class](docs/images/NewLightningComponentClass.png)
+
+Then copy and paste the code from the [Lightning Action Controller template code](CodeTemplates/ListButton/PageController/ltng_UrlHackListButtonCtrl.cls)
+
+Note the `@CHANGE` sections and make the appropriate changes.
+
+@TODO: link the changes to specific sections in github repo
+
 <table><tr><th>Placeholder</th><th>Description</th><th>Example</th></tr>
-<tr><td colspan='3'><b>Change 1 - </b></td></tr>
-<tr><td></td><td></td><td></td></tr>
-<tr><td></td><td></td><td></td></tr>
-<tr><td></td><td></td><td></td></tr>
-<tr><td></td><td></td><td></td></tr>
+<tr><td colspan='3'><b>Change 1 - Retrieve the base object info - to use for default values</b></td></tr>
+<tr><td>YOUR_BASE_SOBJECT_API_NAME__c</td><td>the API Name of the base SObject</td><td>ex: Account or CustomObject__c</td></tr>
+<tr><td>YOUR_FIELD_API_NAME__c</td><td>the API Names of the fields to retrieve</td><td>ex: CustomField__c</td></tr>
+<tr><td colspan='3'><b>Change 2 - Determine the RecordTypeId to use for the new object</b></td></tr>
+<tr><td>NEW_OBJECT_API_NAME__c</td><td>the API Name of SObject the new record should be</td><td>ex: Opportunity, or ChildObject__c</td></tr>
+<tr><td>YOUR_RECORDTYPE_NAME</td><td>the NAME of the record type to use</td><td>ex: Extended or FieldService</td></tr>
+<tr><td colspan='3'><b>Change 3 - create @AuraEnabled public properties for the info to be used in defaulting</b></td></tr>
+<tr><td>YOUR_BASE_SOBJECT_API_NAME__c</td><td>the API Name of the base SObject</td><td>ex: Account or CustomObject__c</td></tr>
+<tr><td>Any Other Properties</td><td>Using a similar definition, other properties</td><td>public String userLastName;</td></tr>
 </table>
 
-* [VisualForce Page Controller](CodeTemplates/ListButton/PageController)
-* [Visualforce Page](CodeTemplates/ListButton/VisualForcePage)
+### Create the VisualForce Page
+
+The VisualForce page uses the information from the controller, to tell lightning how to create the object.
+
+Within the Developer Console, create a new Visualforce Page through: <br />
+File > New > VisualForce Page
+
+![New VisualForce page from Console](docs/images/NewVisualforcePage.png)
+
+Copy and paste the code from the [URL Hack List Button VisualForce page Template ](CodeTemplates/ListButton/VisualForcePage/ltng_UrlHackListButton.page)
+
+Address any sections that have `@CHANGE`, and make the appropriate changes.
+
+<table><tr><th>Placeholder</th><th>Description</th><th>Example</th></tr>
+<tr><td colspan='3'><b>Change 1 - </b></td></tr>
+<tr><td>NEW_OBJECT_API_NAME__c</td><td> type of SObject (API Name) we want to create - for the new object</td><td>ex: Opportunity, or ChildObject__c</td></tr>
+<tr><td colspan='3'><b>Change 2 - get the fields from the base object</b></td></tr>
+<tr><td>NEW_OBJECT_API_NAME__c</td><td> type of SObject (API Name) we want to create - for the new object</td><td>ex: Opportunity, or ChildObject__c</td></tr>
+<tr><td>Any other defaults</td><td>Add any additional fields to use for defaults</td><td>var userLastName = resultValue.userLastName;<br /> More listed below in the template</td></tr>
+<tr><td colspan='3'><b>Change 3 - default the values</b></td></tr>
+<tr><td>FIELD_TO_DEFAULT_API_NAME__c</td><td>the API name of the field to default</td><td>ex: Name or CustomDescription__c</td></tr>
+<tr><td>DEFAULT_VALUE</td><td>the value to default</td><td>the variable from above</td></tr>
+</table>
+
+#### Finally, create the List View Button
+
+To create a new List View button, open `Setup` under the Gear at the top-right of Lightning Experience.
+
+![Open Setup](docs/images/OpenSetup.png)
+
+Select `Object Manager` and navigate to the type of Object to be created.
+
+![Open Child Object from Object Manager](docs/images/SelectChildFromObjectManager.png)
+
+Then Select `Buttons, Links and Actions`, and specify `New Button or Link`
+
+![New Lightning Action](docs/images/NewListButton1.png)
+
+Specify the Label of the button (what you will see to select the button)
+and the unique API Name of the button (with an optional Description) 
+
+Mark that the button will be a `List Button` (Uncheck `Display Checkboxes` - as we are not using any existing record)
+
+Specify that we will `Display in Existing window with sidebar`, and the List Button Visualforce page we just created.
+
+![New Lightning Action Edit Screen](docs/images/NewListButton2.png)
+
+**Don't forget to add the button to your Page Layout**
+
+![Add Button to the Page Layout](docs/images/NewLightningAction3.png)
+
+The entire component can be found [under Lightning Component Template files - for reference](CodeTemplates/ListButton)
+
 
 ---
 

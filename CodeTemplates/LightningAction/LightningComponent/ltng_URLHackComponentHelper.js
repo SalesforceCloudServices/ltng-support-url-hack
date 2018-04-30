@@ -40,7 +40,7 @@
 		//-- replace NEW_SOBJECT_API_NAME__c with the API Name of the type of object to create (ex: Account, CustomObject__c)
 		//-- replace TARGET_RECORD_TYPE with the NAME of the RecordType to use when creating the new record. (ex: Extended or FieldService)
 
-		//-- replace FIELD_TO_DEFAULT_API_NAME__c with the API name of the field to default
+		//-- replace FIELD_TO_DEFAULT_API_NAME__c with the API name of the field to default (ex: Name or CustomDescription__c)
 		//-- replace DEFAULT_VALUE as the value to default - the variable from above
 
 		//-- the following uses this format:

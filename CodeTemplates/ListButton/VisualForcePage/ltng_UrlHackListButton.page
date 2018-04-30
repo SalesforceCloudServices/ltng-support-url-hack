@@ -11,7 +11,9 @@
 -->
 <!--
  //-- CHANGE: set the standardController
- //-- replace NEW_OBJECT_API_NAME__c with with the API Name of SObject the new record should be (ex: Opportunity, or ChildObject__c)
+ //-- replace NEW_OBJECT_API_NAME__c with the API Name of SObject the new record should be (ex: Opportunity, or ChildObject__c)
+ //-- (if another apex class was used instead of ltng_UrlHackListButtonCtrl)
+        replace the extensions value with the name of your new class.
 -->        
 <apex:page standardController="NEW_OBJECT_API_NAME__c" extensions="ltng_UrlHackListButtonCtrl"
     recordSetVar="customChildren"
@@ -103,23 +105,16 @@
                 //'SamplePicklist__c': childPicklist
             };
             
-
-
-            //-- @CHANGE: create the object
-            //-- replace NEW_SOBJECT_API_NAME__c with the API Name of the type of object to create (ex: Account, CustomObject__c)
-            
-            //-- sforce.one.createRecord( ObjectType, RecordType, defaultField Values)
+            //--	-	-	-	-	-	-	-	-	-	-	-
+            //-- UPDATE THE LINES ABOVE
+            //--	-	-	-	-	-	-	-	-	-	-	-
             
             //-- the following line uses this format:
             //-- sforce.one.createRecord( sObjectName, recordTypeId, objectWithDefaultPropertyValues );
     		//-- see here for more information
             //-- https://developer.salesforce.com/docs/atlas.en-us.salesforce1.meta/salesforce1/salesforce1_dev_jsapi_sforce_one.htm
             
-            sforce.one.createRecord('NEW_SOBJECT_API_NAME__c', recordTypeId, defaultObject );
-            
-            //--	-	-	-	-	-	-	-	-	-	-	-
-            //-- UPDATE THE LINES ABOVE
-            //--	-	-	-	-	-	-	-	-	-	-	-
+            sforce.one.createRecord(newObjectApiName, recordTypeId, defaultObject );
         }
     </script>
 </apex:page>

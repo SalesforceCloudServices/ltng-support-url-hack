@@ -1011,9 +1011,8 @@ Please login to an available sandbox and click the link below.
 
 [https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA)
 
-https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA
-
-https://saas-connect-9554-dev-ed.lightning.force.com/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA
+(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA` <br />
+if you are already logged in)
 
 #### Once the install is complete
 

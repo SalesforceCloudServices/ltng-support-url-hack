@@ -45,6 +45,25 @@
 	},
 
 	/**
+	 * Determines the classes used for the expander class
+	 */
+	calcExpanderClass : function(component, helper){
+		var baseClasses = "slds-button slds-button_icon";
+		var visibilityHiddenClass = 'visibility-hidden';
+		var result = baseClasses;
+
+		var reasoningValue = component.get('v.reasoning');
+		var seeMoreValue = component.get('v.seeMore');
+
+		if( $A.util.isEmpty(reasoningValue) && $A.util.isEmpty(seeMoreValue)){
+			result += ' ' + visibilityHiddenClass;
+		}
+
+		component.set('v.expanderClass', result);
+		return(result);
+	},
+
+	/**
 	 * Toggles whether the expandible area is expanded (true) or not (false)
 	 * @see https://www.lightningdesignsystem.com/components/expandable-section/
 	 */

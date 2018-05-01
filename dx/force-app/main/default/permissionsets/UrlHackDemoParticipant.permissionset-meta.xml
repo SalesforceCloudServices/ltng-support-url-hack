@@ -99,6 +99,10 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabSettings>
+        <tab>URL_Hack_Demo_Setup</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>ltng_UrlHackBase__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>

@@ -6,7 +6,7 @@
  * @component: ltng_URLHackDemoSetup
  **/
 -->
-<aura:component controller="ltng_URLHackComponentCtrl"
+<aura:component controller="ltng_URLHackDemoSetupCtrl"
     implements="force:appHostable,flexipage:availableForAllPageTypes"
     access="global"
 >
@@ -28,10 +28,17 @@
             <div class="slds-box slds-theme_default slds-p-top_x-large slds-p-bottom_x-large">
                 <div class="slds-clearfix">
                     <div class="install-description slds-float_left">
-                        <div class='slds-text-heading_small'>Overview</div>
+                        <div class='slds-text-heading_medium'>Overview</div>
                         <p>Run this setup to initialize the demo <br />
                             (assign permission sets and create default objects).
                         </p>
+                        <div class='slds-text-heading_small'>Manual Step</div>
+                        <p><b>Please Note:
+                            <a href='https://github.com/SalesforceCloudServices/ltng-support-url-hack#add-the-missing-permissions-on-the-permission-set'>There is a known bug requiring an additional manual step.</a></b>
+                            <br />
+                            We are working to correct it.
+                        </p>
+                        <p><a onclick='{! c.handlePermissionSetOpen }'>Please add the 'Expanded' and 'Minimum' record types to the PermissionSet.</a></p>
                         <p class=''>For more information, please see: <br />
                             <a href='https://github.com/SalesforceCloudServices/ltng-support-url-hack#install'>https://github.com/SalesforceCloudServices/ltng-support-url-hack#install</a>
                         </p>
@@ -48,6 +55,7 @@
             <div class="slds-box slds-theme_default slds-p-top_large">
                 <ul class="slds-timeline">
                     <aura:iteration items="{! v.completionSteps }" var="completionStep">
+                        <!-- @TODO: investigate simply sending the completion step instead -->
                         <c:ltng_URLHackDemoSetupItem
                             isComplete="{# completionStep.isComplete }"
                             errMsg="{# completionStep.errMsg }"
@@ -59,173 +67,6 @@
                             seeMoreLabel="{# completionStep.seeMoreLabel }"
                         />
                     </aura:iteration>
-                </ul>
-            </div>
-        </lightning:layoutItem>
-
-        <lightning:layoutItem size="12" padding="around-small">
-            <div class="slds-box slds-theme_default slds-p-top_large">
-                <ul class="slds-timeline">
-                    <aura:iteration items="{! v.completionSteps }" var="completionStep">
-                    <li>
-                        <div class="slds-timeline__item_expandable slds-timeline__item_task">
-                            <span class="slds-assistive-text">task</span>
-                            <div class="slds-media" style="padding-left:25px;">
-                            <div class="slds-media__figure">
-                                <lightning:icon iconName="standard:task" size="small" />
-                            </div>
-                            <div class="slds-media__body">
-                                <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
-                                    <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
-                                        <h3 class="slds-truncate" title="Review proposals for EBC deck with larger team and have marketing review this">
-                                            <a href="javascript:void(0);">
-                                                <strong>Review proposals for EBC deck with larger team and have marketing review this</strong>
-                                            </a>
-                                        </h3>
-                                    </div>
-                                    <div class="slds-timeline__actions slds-timeline__actions_inline">
-                                        <p class="slds-timeline__date">9:00am | 3/20/17</p>
-                                    </div>
-                                </div>
-                                <p class="slds-m-horizontal_xx-small">
-                                    <a href="javascript:void(0);">You</a>
-                                    created a task with
-                                    <a href="javascript:void(0);">Charlie Gomez</a>
-                                </p>
-                                <article class="slds-box slds-timeline__item_details slds-theme_shade slds-m-top_x-small slds-m-horizontal_xx-small" id="task-item-base" aria-hidden="true">
-                                    <ul class="slds-list_horizontal slds-wrap">
-                                        <li class="slds-grid slds-grid--vertical slds-size_1-of-2 slds-p-bottom_small">
-                                        <span class="slds-text-title slds-p-bottom_x-small">Name</span>
-                                        <span class="slds-text-body_medium slds-truncate" title="Charlie Gomez">
-                                            <a href="javascript:void(0);">Charlie Gomez</a>
-                                        </span>
-                                        </li>
-                                        <li class="slds-grid slds-grid--vertical slds-size_1-of-2 slds-p-bottom_small">
-                                        <span class="slds-text-title slds-p-bottom_x-small">Related To</span>
-                                        <span class="slds-text-body_medium slds-truncate" title="Tesla Cloudhub + Anypoint Connectors">
-                                            <a href="javascript:void(0);">Tesla Cloudhub + Anypoint Connectors</a>
-                                        </span>
-                                        </li>
-                                    </ul>
-                                    <div>
-                                        <span class="slds-text-title">Description</span>
-                                        <p class="slds-p-top_x-small">Need to finalize proposals and brand details before the meeting</p>
-                                    </div>
-                                </article>
-                            </div>
-                            </div>
-                        </div>
-                    </li>
-                    </aura:iteration>
-                </ul>
-            </div>
-        </lightning:layoutItem>
-        
-        <lightning:layoutItem size="12" padding="around-small">
-            <div class="slds-box slds-theme_default slds-p-top_large">
-                <ul class="slds-timeline">
-                    <li>
-                        <div class="slds-timeline__item_expandable slds-timeline__item_task">
-                            <span class="slds-assistive-text">task</span>
-                            <div class="slds-media" style="padding-left:25px;">
-                            <div class="slds-media__figure">
-                                <div class="slds-icon_container slds-icon-standard-task slds-timeline__icon" title="task">
-                                    <lightning:icon iconName="standard:task" size="small" />
-                                </div>
-                            </div>
-                            <div class="slds-media__body">
-                                <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
-                                    <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
-                                        <h3 class="slds-truncate" title="Review proposals for EBC deck with larger team and have marketing review this">
-                                            <a href="javascript:void(0);">
-                                                <strong>Review proposals for EBC deck with larger team and have marketing review this</strong>
-                                            </a>
-                                        </h3>
-                                    </div>
-                                    <div class="slds-timeline__actions slds-timeline__actions_inline">
-                                        <p class="slds-timeline__date">9:00am | 3/20/17</p>
-                                    </div>
-                                </div>
-                                <p class="slds-m-horizontal_xx-small">
-                                    <a href="javascript:void(0);">You</a>
-                                    created a task with
-                                    <a href="javascript:void(0);">Charlie Gomez</a>
-                                </p>
-                                <article class="slds-box slds-timeline__item_details slds-theme_shade slds-m-top_x-small slds-m-horizontal_xx-small" id="task-item-base" aria-hidden="true">
-                                    <ul class="slds-list_horizontal slds-wrap">
-                                        <li class="slds-grid slds-grid--vertical slds-size_1-of-2 slds-p-bottom_small">
-                                        <span class="slds-text-title slds-p-bottom_x-small">Name</span>
-                                        <span class="slds-text-body_medium slds-truncate" title="Charlie Gomez">
-                                            <a href="javascript:void(0);">Charlie Gomez</a>
-                                        </span>
-                                        </li>
-                                        <li class="slds-grid slds-grid--vertical slds-size_1-of-2 slds-p-bottom_small">
-                                        <span class="slds-text-title slds-p-bottom_x-small">Related To</span>
-                                        <span class="slds-text-body_medium slds-truncate" title="Tesla Cloudhub + Anypoint Connectors">
-                                            <a href="javascript:void(0);">Tesla Cloudhub + Anypoint Connectors</a>
-                                        </span>
-                                        </li>
-                                    </ul>
-                                    <div>
-                                        <span class="slds-text-title">Description</span>
-                                        <p class="slds-p-top_x-small">Need to finalize proposals and brand details before the meeting</p>
-                                    </div>
-                                </article>
-                            </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slds-timeline__item_expandable slds-timeline__item_call">
-                            <span class="slds-assistive-text">log_a_call</span>
-                            <div class="slds-media" style="padding-left:25px;">
-                            <div class="slds-media__figure">
-                                <div class="slds-icon_container slds-icon-standard-log-a-call slds-timeline__icon" title="call">
-                                    <lightning:icon iconName="standard:log_a_call" size="small" />
-                                </div>
-                            </div>
-                            <div class="slds-media__body">
-                                <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
-                                    <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
-                                        <h3 class="slds-truncate" title="Mobile conversation on Monday">
-                                        <a href="javascript:void(0);">
-                                            <strong>Mobile conversation on Monday</strong>
-                                        </a>
-                                        </h3>
-                                    </div>
-                                    <div class="slds-timeline__actions slds-timeline__actions_inline">
-                                        <p class="slds-timeline__date">10:00am | 3/23/17</p>
-                                    </div>
-                                </div>
-                                <p class="slds-m-horizontal_xx-small">
-                                    <a href="javascript:void(0);">You</a>
-                                    logged a call with
-                                    <a href="javascript:void(0);">Adam Chan</a>
-                                </p>
-                                <article class="slds-box slds-timeline__item_details slds-theme_shade slds-m-top_x-small slds-m-horizontal_xx-small" id="call-item-base" aria-hidden="true">
-                                    <ul class="slds-list_horizontal slds-wrap">
-                                        <li class="slds-grid slds-grid--vertical slds-size_1-of-2 slds-p-bottom_small">
-                                        <span class="slds-text-title slds-p-bottom_x-small">Name</span>
-                                        <span class="slds-text-body_medium slds-truncate" title="Adam Chan">
-                                            <a href="javascript:void(0);">Adam Chan</a>
-                                        </span>
-                                        </li>
-                                        <li class="slds-grid slds-grid--vertical slds-size_1-of-2 slds-p-bottom_small">
-                                        <span class="slds-text-title slds-p-bottom_x-small">Related To</span>
-                                        <span class="slds-text-body_medium slds-truncate" title="Tesla Cloudhub + Anypoint Connectors">
-                                            <a href="javascript:void(0);">Tesla Cloudhub + Anypoint Connectors</a>
-                                        </span>
-                                        </li>
-                                    </ul>
-                                    <div>
-                                        <span class="slds-text-title">Description</span>
-                                        <p class="slds-p-top_x-small">Adam seemed interested in closing this deal quickly! Let’s move.</p>
-                                    </div>
-                                </article>
-                            </div>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </lightning:layoutItem>

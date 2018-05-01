@@ -17,6 +17,7 @@
     <aura:attribute name="seeMoreLabel" type="String" />
     <!-- internal attributes -->
     <aura:attribute name="iconName" type="String" access="private" />
+    <aura:attribute name="expanderClass" type="String" access="private" />
     <aura:attribute name="timeLineClass" type="String" access="private" />
     <aura:attribute name="isExpanded" type="boolean" default="false" />
     <!-- handlers -->
@@ -28,7 +29,11 @@
             <span class="slds-assistive-text">task</span>
             <div class="slds-media" style="">
             <div class="slds-media__figure">
-                <button class="slds-button slds-button_icon" onclick="{! c.handleExpansionToggle }" title="Toggle details for Mobile conversation on Monday" aria-controls="call-item-base" aria-expanded="false">
+                <!-- class="{! 'slds-button slds-button_icon' + IF( AND( not(empty(v.reasoning)), not(empty(v.seeMore))), ' visibility-hidden', '') }" -->
+                <button class="{! v.expanderClass }"
+                    onclick="{! c.handleExpansionToggle }"
+                    title="Toggle details for Mobile conversation on Monday" aria-controls="call-item-base" aria-expanded="false"
+                >
                     <lightning:icon iconName="utility:switch" size="x-small" class="slds-timeline__details-action-icon" />
                 </button>
                 <!--

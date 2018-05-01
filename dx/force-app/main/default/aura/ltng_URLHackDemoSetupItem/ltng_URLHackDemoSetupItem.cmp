@@ -29,16 +29,12 @@
             <span class="slds-assistive-text">task</span>
             <div class="slds-media" style="">
             <div class="slds-media__figure">
-                <!-- class="{! 'slds-button slds-button_icon' + IF( AND( not(empty(v.reasoning)), not(empty(v.seeMore))), ' visibility-hidden', '') }" -->
                 <button class="{! v.expanderClass }"
                     onclick="{! c.handleExpansionToggle }"
                     title="Toggle details for Mobile conversation on Monday" aria-controls="call-item-base" aria-expanded="false"
                 >
                     <lightning:icon iconName="utility:switch" size="x-small" class="slds-timeline__details-action-icon" />
                 </button>
-                <!--
-                <lightning:buttonIcon variant="bare" iconName="utility:switch" class="slds-timeline__details-action-icon" aria-controls="task-item-base" aria-expanded="false" />
-                -->
                 <lightning:icon iconName="{! v.iconName }" size="small" />
             </div>
             <div class="slds-media__body">

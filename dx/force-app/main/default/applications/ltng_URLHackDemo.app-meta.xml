@@ -10,6 +10,7 @@
     <formFactors>Large</formFactors>
     <label>URL Hack Demo</label>
     <navType>Standard</navType>
+    <tabs>URL_Hack_Demo_Setup</tabs>
     <tabs>ltng_UrlHackBase__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>URL_Hack_Demo_UtilityBar</utilityBar>

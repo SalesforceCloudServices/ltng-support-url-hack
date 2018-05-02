@@ -1009,25 +1009,43 @@ This works very similar to an App Exchange install.
 
 Please login to an available sandbox and click the link below.
 
-[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA)
+[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqfeQAA](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sqfeQAA)
 
-(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A000002sqcaQAA` <br />
+(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A000002sqfeQAA` <br />
 if you are already logged in)
 
-#### Once the install is complete
+![Install for Admins](docs/images/installPackage.png)
 
-You should now see the `URL Hack Demo` app,
-and follow along with the demos above.
+It is recommended to install for Admins Only (but all options will work)
+
+##### Run Demo Setup
+
+Next, click on the 'dice' and open the 'URL Hack Demo' app.
 
 ![URL Hack Demo App](docs/images/URLHackDemoApp.png)
 
-#### Known Issue
+and run `Setup` from the `URL Hack Demo Setup` tab.
+
+![URL Hack Demo Setup](docs/images/demoSetup1.png)
+
+This will then perform any additional setup (such as creating records, etc).
+
+##### Run the Demos
+
+Thats it, all information should be avaiable for running all demos now from the `URL Hack Bases` tab.
+
+Feel free to create your own and to create children through the QuickActions, Lightning Actions or List View buttons.
+
+#### -- Known Issue -- Add the missing permissions on the permission set
+
+If you get an error saying 'This record is not available' (when creating records),
+you are likely affectd by a known issue with Unlocked Package deploys.
+
+(This is also mentioned from the Setup page)
 
 We are working with different teams, but it appears as though the installation works correctly from Salesforce CLI, but requires additional steps from the insllation URL.
 
 **We appologize for this inconvenience and are working towards correcting it**
-
-##### Add the missing permissions on the permission set
 
 **1.** Find the 'Url Hack Demo Participant' Permission set.
 
@@ -1040,35 +1058,6 @@ We are working with different teams, but it appears as though the installation w
 Add Extended and Minimum Record types to the Permission Set.
 
 ![Add record types to permission set](docs/images/correctPermissionSet3.png)
-
-##### Add the current user to the permission set
-
-Next, we want to add the current user to the Permission Set.
-
-**1.** Click the `Manage Assignments` button on the permission set.
-
-![Manage Assignments Button](docs/images/addUserAssignment.jpg)
-
-**2.** Click `Add Assignment` button
-
-**3.** Click the checkbox next to your user. Then click the `Assign` button.
-
-![Add current user to permission set](docs/images/addUserAssignment2.jpg)
-
-##### Run Demo Setup
-
-Finally, click on the 'dice' and open the 'URL Hack Demo' app,
-and run `Setup` from the `URL Hack Demo Setup` tab.
-
-![URL Hack Demo Setup](docs/images/demoSetup1.png)
-
-This will then perform any additional setup (such as creating records, etc).
-
-##### Run the Demos
-
-All information should be avaiable for running all demos now from the `URL Hack Bases` tab.
-
-Please see the Demos from the [Overview](#Overview) section for more info.
 
 
 ## Install via Salesforce CLI
@@ -1087,21 +1076,24 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 
 	sfdx force:user:permset:assign -n UrlHackDemoParticipant -u [[orgAlias]]
 	
-**3.** Upload the data
+**3.** Run Demo Setup
 
-	sfdx force:data:tree:import -p ../data/trees/ltng_UrlHackBase__c-plan.json
-	
-	sfdx force:data:tree:import -p ../data/trees/ltng_URLHackCustomSetting__c-plan.json
-	
-...
-
-Thats it, you can now open the org, <br />
-and find the 'URL Hack Demo' lightning app <br />
-and sample 'URL Hack Base' tab / records.
+Finally, click on the 'dice' and open the 'URL Hack Demo' app,
+and run `Setup` from the `URL Hack Demo Setup` tab.
 
 	sfdx force:org:open -u [[orgAlias]]
 
+![URL Hack Demo Setup](docs/images/demoSetup1.png)
+
+This will then perform any additional setup (such as creating records, etc).
+
+...
+
+Thats it, all information should be avaiable for running all demos now from the `URL Hack Bases` tab.
+
 Feel free to create your own and to create children through the QuickActions, Lightning Actions or List View buttons.
+
+Please see the Demos from the [Overview](#Overview) section for more info.
 
 ## Install via Metadata API
 

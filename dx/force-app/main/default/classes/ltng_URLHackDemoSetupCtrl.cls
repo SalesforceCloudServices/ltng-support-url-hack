@@ -265,6 +265,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
                 SELECT Id, PermissionSetId, AssigneeId
                 FROM PermissionSetAssignment
                 WHERE AssigneeId = :userId
+                    AND PermissionSetId = :ps.Id 
                 LIMIT 1
             ];
             

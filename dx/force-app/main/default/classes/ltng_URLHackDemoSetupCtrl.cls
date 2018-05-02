@@ -248,18 +248,30 @@ global with sharing class ltng_URLHackDemoSetupCtrl {
 
     /**
      * Assign the user to the custom setting.
+     * <p>Note: actual work must be a future to avoid a MixedDML issue</p>
      **/
     global static SetupStep addUserToPermissionSet( boolean getInfoOnly ){
         SetupStep step = new SetupStep( new Map<String,Object>{
             'title' => 'Assign current user PermissionSet to see the Demo',
-            'descr' => 'PermissionSet: ' + PERMISSION_SET_NAME,
+            'descr' => 'PermissionSet: ' + PERMISSION_SET_NAME + '. May take a second to take effect.',
             'reasoning' => 'All access is granted by PermissionSet. Only those with this PermissionSet can see the demo'
         });
 
         if( getInfoOnly ){
             return(step);
         }
-        
+
+        addUserToPermissionSetImpl();
+
+        step.markCompleted();
+        return(step);
+    }
+
+    /**
+     * Implementation that actually adds the user to the permission set.
+     **/
+    @future
+    global static void addUserToPermissionSetImpl(){    
         Id userId = UserInfo.getUserId();
         PermissionSetAssignment[] results = null;
         
@@ -289,14 +301,11 @@ global with sharing class ltng_URLHackDemoSetupCtrl {
                 insert results;
             }
         } catch(Exception err){
-            step.errMsg = 'Unable to assign permission set to the current user:' + PERMISSION_SET_NAME;
-            step.devErrMsg = err.getMessage();
             //-- do nothing
-            System.debug(step.errMsg);
-            System.debug(step.devErrMsg);
+            System.debug('ERROR - could not assign user to permission set');
+            System.debug(err.getMessage());
         }
-
-        step.markCompleted();
-        return(step);
     }
+
+
 }

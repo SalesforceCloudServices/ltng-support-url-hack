@@ -1055,22 +1055,21 @@ Next, we want to add the current user to the Permission Set.
 
 ![Add current user to permission set](docs/images/addUserAssignment2.jpg)
 
-##### Run the Anonymous Apex to run the install script
-Open the Developer Console from the 'Gear' at the top right.
+##### Run Demo Setup
 
-![Developer Console Open](docs/images/developerConsole1.png)
+Finally, click on the 'dice' and open the 'URL Hack Demo' app,
+and run `Setup` from the `URL Hack Demo Setup` tab.
 
-From here, select Debug > `Open Execute Anonymous Window`
+![URL Hack Demo Setup](docs/images/demoSetup1.png)
 
-![Developer Console open Anonymous Apex](docs/images/developerConsole2.png)
+This will then perform any additional setup (such as creating records, etc).
 
-Finally, run this command:
+##### Run the Demos
 
-	new ltng_UrlHackPostInstall().runEverything();
-	
-For example:
+All information should be avaiable for running all demos now from the `URL Hack Bases` tab.
 
-![Developer Console run anonymous apex](docs/images/developerConsole3.png)
+Please see the Demos from the [Overview](#Overview) section for more info.
+
 
 ## Install via Salesforce CLI
 

@@ -27,5 +27,37 @@
 			component.set("v.completionSteps", results);
 		})
 		$A.enqueueAction(action);
+	},
+
+	/**
+	 * starts the process to redirect to the permission set trouble spot.
+	 */
+	redirectToPermissionIssue : function(component, helper){
+		var action = component.get("c.getMissingPermissionSetRedirection");
+		var defaultAddress = '/one/one.app#/setup/PermSets/home';
+
+		action.setCallback(this, function(response){
+			var state = response.getState();
+			var targetAddress = defaultAddress;
+
+			if(state === "SUCCESS"){
+				var targetAddress = response.getReturnValue();
+			}
+
+			helper.redirectToURL(component, helper, targetAddress);
+		})
+		$A.enqueueAction(action);
+	},
+
+	/**
+	 * Redirects the user to the trouble spot from metadata.
+	 * @param targetURL (String) - the url to redirect to.
+	 */
+	redirectToURL : function(component, helper, targetURL){
+		var action = $A.get('e.force:navigateToURL');
+		action.setParams({
+			'url': targetURL
+		});
+		action.fire();
 	}
 })

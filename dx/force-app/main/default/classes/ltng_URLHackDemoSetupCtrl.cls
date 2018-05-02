@@ -5,6 +5,8 @@ global with sharing class ltng_URLHackDemoSetupCtrl {
 
     //-- static
     global static final String PERMISSION_SET_NAME = 'UrlHackDemoParticipant';
+    global static final String CHILD_SOBJECT_NAME = 'ltng_URLHackChild';
+    global static final String DEFAULT_MISSING_PERMISSION_URL = '/one/one.app#/setup/PermSets/home';
 
     //-- setup step (conveys to the component what was or will be run)
     /**
@@ -75,9 +77,48 @@ global with sharing class ltng_URLHackDemoSetupCtrl {
         }
     }
 
+    
+
+    //--    -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
+    //--    One-Off - used only because the permission set doesn't seem to take the change
+    //--    -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
+
+    @AuraEnabled
+    global static String getMissingPermissionSetRedirection(){
+        String results = null;
+        String tempStr = null;
+        String newResult = null;
+        
+        try {
+            PermissionSet targetPS = [
+                SELECT Id, Name
+                FROM PermissionSet
+                WHERE Name = :PERMISSION_SET_NAME
+                LIMIT 1
+            ];
+
+            EntityDefinition targetObject = [
+                SELECT DeveloperName, DurableId
+                FROM EntityDefinition 
+                WHERE DeveloperName = :CHILD_SOBJECT_NAME
+            ];
+
+            tempStr = '/' + targetPS.Id + '?s=EntityPermissions&o=' + targetObject.DurableId;
+            newResult = '/one/one.app#/setup/PermSets/page?address=' + EncodingUtil.urlEncode(tempStr,'UTF-8');
+            
+            results = newResult;
+        } catch(Exception err){
+            results = DEFAULT_MISSING_PERMISSION_URL;
+        }
+
+        return results;
+    }
+    
+
     //--    -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
     //--    CHANGE - BELOW
     //--    -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
+    
 
     /**
      * Actually runs the setup

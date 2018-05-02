@@ -1,39 +1,42 @@
 /**
  * Controller for the ltng_UrlHackDemoSetup page.
  **/
-public with sharing class ltng_URLHackDemoSetupCtrl {
+global with sharing class ltng_URLHackDemoSetupCtrl {
 
     //-- static
-    public static final String PERMISSION_SET_NAME = 'UrlHackDemoParticipant';
+    global static final String PERMISSION_SET_NAME = 'UrlHackDemoParticipant';
 
     //-- setup step (conveys to the component what was or will be run)
     /**
      * Internal class that represents an item to be completed.
      **/
-    class SetupStep {
+    global class SetupStep {
         @AuraEnabled
-        public boolean isComplete;
+        global boolean isComplete;
 
         @AuraEnabled
-        public String errMsg;
+        global String errMsg;
 
         @AuraEnabled
-        public String completionDate;
+        global String devErrMsg;
+
+        @AuraEnabled
+        global String completionDate;
         
         @AuraEnabled
-        public String title;
+        global String title;
         
         @AuraEnabled
-        public String descr;
+        global String descr;
 
         @AuraEnabled
-        public String reasoning;
+        global String reasoning;
 
         @AuraEnabled
-        public String seeMore;
+        global String seeMore;
 
         @AuraEnabled
-        public String seeMoreLabel;
+        global String seeMoreLabel;
 
         SetupStep( Map<String,Object> props){
             //-- make similar to sObject inline definition
@@ -42,6 +45,9 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
             }
             if( props.containsKey('errMsg')){
                 this.errMsg = (String)props.get('errMsg');
+            }
+            if( props.containsKey('devErrMsg')){
+                this.devErrMsg = (String)props.get('devErrMsg');
             }
             if( props.containsKey('completionDate')){
                 this.completionDate = (String)props.get('completionDate');
@@ -78,7 +84,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
      * @return SetupStep[] - list of setup steps ran and the status for each.
      **/
     @AuraEnabled
-    public static SetupStep[] runSetup(boolean getInfoOnly){
+    global static SetupStep[] runSetup(boolean getInfoOnly){
         SetupStep[] results = new SetupStep[]{
             removeAllBaseRecords(getInfoOnly),
             removeAllCustomSettingRecords(getInfoOnly),
@@ -94,7 +100,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
     /**
      * Remove any of the base records that are currently there.
      **/
-    public static SetupStep removeAllBaseRecords( boolean getInfoOnly){
+    global static SetupStep removeAllBaseRecords( boolean getInfoOnly){
         SetupStep step = new SetupStep( new Map<String,Object>{
             'title' => 'Remove any existing base objects'
         });
@@ -113,6 +119,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
             delete recordsToDelete;
         } catch(Exception err){
             step.errMsg = 'Error occurred while attempting to delete all base records';
+            step.devErrMsg = err.getMessage();
             //-- do nothing for now.
             System.debug(step.errMsg);
         }
@@ -124,7 +131,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
     /**
      * remove any custom setting records that are currently there.
      **/
-    public static SetupStep removeAllCustomSettingRecords( boolean getInfoOnly ){
+    global static SetupStep removeAllCustomSettingRecords( boolean getInfoOnly ){
         SetupStep step = new SetupStep( new Map<String,Object>{
             'title' => 'Remove any existing custom setting records'
         });
@@ -143,6 +150,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
             delete recordsToDelete;
         } catch(Exception err){
             step.errMsg = 'Error occurred while attempting to delete all base records';
+            step.devErrMsg = err.getMessage();
             //-- do nothing for now.
             System.debug(step.errMsg);
         }
@@ -154,7 +162,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
     /**
      * Create the base records.
      **/
-    public static SetupStep createBaseRecords( boolean getInfoOnly ){
+    global static SetupStep createBaseRecords( boolean getInfoOnly ){
         SetupStep step = new SetupStep( new Map<String,Object>{
             'title' => 'Create Base Objects',
             'descr' => 'Url Hack Base - objects (ltng_UrlHackBase__c)',
@@ -200,6 +208,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
             step.seeMore = baseRecords[0].Id;
         } catch( Exception err){
             step.errMsg = 'error occurred while creating base records';
+            step.devErrMsg = err.getMessage();
             System.debug(step.errMsg);
         }
 
@@ -210,7 +219,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
     /**
      * Create the custom setting record.
      **/
-    public static SetupStep createCustomSettingRecords( boolean getInfoOnly){
+    global static SetupStep createCustomSettingRecords( boolean getInfoOnly){
         SetupStep step = new SetupStep( new Map<String,Object>{
             'title' => 'Create CustomSetting record',
             'descr' => 'URL Hack Custom Setting - custom Setting (ltng_URLHackCustomSetting__c)',
@@ -229,6 +238,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
             insert results;
         } catch( Exception err){
             step.errMsg = 'error occurred while creating custom setting records';
+            step.devErrMsg = err.getMessage();
             System.debug(step.errMsg);
         }
 
@@ -239,7 +249,7 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
     /**
      * Assign the user to the custom setting.
      **/
-    public static SetupStep addUserToPermissionSet( boolean getInfoOnly ){
+    global static SetupStep addUserToPermissionSet( boolean getInfoOnly ){
         SetupStep step = new SetupStep( new Map<String,Object>{
             'title' => 'Assign current user PermissionSet to see the Demo',
             'descr' => 'PermissionSet: ' + PERMISSION_SET_NAME,
@@ -280,8 +290,10 @@ public with sharing class ltng_URLHackDemoSetupCtrl {
             }
         } catch(Exception err){
             step.errMsg = 'Unable to assign permission set to the current user:' + PERMISSION_SET_NAME;
+            step.devErrMsg = err.getMessage();
             //-- do nothing
             System.debug(step.errMsg);
+            System.debug(step.devErrMsg);
         }
 
         step.markCompleted();

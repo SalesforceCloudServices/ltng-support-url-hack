@@ -59,6 +59,7 @@
                         <c:ltng_URLHackDemoSetupItem
                             isComplete="{# completionStep.isComplete }"
                             errMsg="{# completionStep.errMsg }"
+                            devErrMsg="{# completionStep.devErrMsg }"
                             completionDate="{# completionStep.completionDate }"
                             title="{# completionStep.title }"
                             descr="{# completionStep.descr }"

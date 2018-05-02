@@ -9,6 +9,7 @@
     <!-- attributes -->
     <aura:attribute name="isComplete" type="Boolean" />
     <aura:attribute name="errMsg" type="String" />
+    <aura:attribute name="devErrMsg" type="String" />
     <aura:attribute name="completionDate" type="String" />
     <aura:attribute name="title" type="String" />
     <aura:attribute name="descr" type="String" />
@@ -51,6 +52,12 @@
                     </div>
                 </div>
                 <p class="slds-m-horizontal_xx-small">{! v.descr }</p>
+                <aura:if isTrue="{! not(empty(v.errMsg)) }">
+                <div class="slds-grid slds-text-color_error slds-m-top_x-small slds-m-horizontal_xx_small" id="task-item-error">
+                    <lightning:icon iconName="utility:error" size="xx-small" />
+                    <p class="slds-m-left_x-small">{! v.errMsg }</p>
+                </div>
+                </aura:if>
                 <article class="slds-box slds-timeline__item_details slds-theme_shade slds-m-top_x-small slds-m-horizontal_xx-small" id="task-item-base" aria-hidden="true">
                     <aura:if isTrue="{! not(empty(v.reasoning)) }">
                     <div>

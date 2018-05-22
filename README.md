@@ -25,6 +25,10 @@ Please see the [Install](#install) section below on how to install the demo.
 
 Quick Actions are the standard for how to create child records off of a parent record.
 
+![Quick Action Screenshot](docs/images/quickActionScreenshot.png)
+
+.
+
 ![Quick Action Demo](docs/images/quickActionDemo.gif)
 
 .
@@ -81,6 +85,8 @@ Please see the [Quick Action Considerations](https://help.salesforce.com/article
 # Lightning Action Demo
 
 Lightning Actions can be customized to work just as well (if not better) than Quick Actions - but do require custom code.
+
+![Lightning Action Screenshot](docs/images/lightningActionScreenshot.png)
 
 ![Lightning Action Demo](docs/images/lightningActionDemo.gif)
 
@@ -592,6 +598,8 @@ Now we have our Lightning Component completed, we just need a Lightning Action (
 # List Button Demo
 
 There may be times that we want the button off the related list.
+
+![Screenshot of List Button](docs/images/listButtonScreenshot.png)
 
 Currently, this can only be done through a VisualForce page related list button.
 

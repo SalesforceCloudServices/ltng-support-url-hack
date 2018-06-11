@@ -143,7 +143,7 @@ A single [Server Side Action](https://developer.salesforce.com/docs/atlas.en-us.
 
 #### Lightning Component
 
-A simple lightning component can then retrieve that data and then call a [force:createRecord lightning event](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/ref_force_createRecord.htm)
+A simple lightning component can then retrieve that data and then call a [force:createRecord lightning event](https://developer.salesforce.com/docs/component-library/bundle/force:createRecord/documentation)
 
 As-well as a [closeQuickAction Lightning Event](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/ref_force_closeQuickAction.htm?search_text=closeQuickAction) to close our component and make way for the standard creation modal.
 
@@ -539,7 +539,7 @@ First we retrieve the values to default (using those already returned from the @
 We then call createRecord using those defaults
 
 		//-- call force:createRecord
-		//-- see here for more info https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/ref_force_createRecord.htm
+		//-- see here for more info https://developer.salesforce.com/docs/component-library/bundle/force:createRecord/documentation
 		//-- createRecordEvent.setParams({
 		//-- 	'entityApiName': 'SObject_Name',
 		//--	'recordTypeId': RECORD_TYPE_OF_THE_OBJECT_TO_CREATE,

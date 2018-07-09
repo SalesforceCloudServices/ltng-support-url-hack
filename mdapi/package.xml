@@ -7,16 +7,18 @@
   <types>
     <name>AuraDefinitionBundle</name>
     <members>ltng_URLHackComponent</members>
+    <members>ltng_URLHackDemoSetup</members>
+    <members>ltng_URLHackDemoSetupItem</members>
   </types>
   <types>
     <name>ApexClass</name>
     <members>ltng_URLHackComponentCtrl</members>
+    <members>ltng_URLHackDemoSetupCtrl</members>
     <members>ltng_UrlHackListButtonCtrl</members>
-    <members>ltng_UrlHackPostInstall</members>
   </types>
   <types>
     <name>ContentAsset</name>
-    <members>lightningLogo3</members>
+    <members>urlHackDemoAppLogo</members>
   </types>
   <types>
     <name>CustomMetadata</name>
@@ -25,6 +27,7 @@
   <types>
     <name>FlexiPage</name>
     <members>URL_Hack_Demo_UtilityBar</members>
+    <members>ltng_UrlHackDemoSetup</members>
   </types>
   <types>
     <name>Layout</name>
@@ -90,6 +93,7 @@
   </types>
   <types>
     <name>CustomTab</name>
+    <members>URL_Hack_Demo_Setup</members>
     <members>ltng_UrlHackBase__c</members>
   </types>
   <version>42.0</version>

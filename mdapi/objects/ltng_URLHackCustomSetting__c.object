@@ -7,7 +7,7 @@
     <visibility>Public</visibility>
     <fields>
         <fullName>CustomSettingValue__c</fullName>
-        <defaultValue>"Custom Setting Value"</defaultValue>
+        <defaultValue>&quot;Custom Setting Value&quot;</defaultValue>
         <externalId>false</externalId>
         <label>Custom Setting Value</label>
         <length>255</length>

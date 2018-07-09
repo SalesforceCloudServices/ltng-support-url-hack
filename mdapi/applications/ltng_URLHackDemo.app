@@ -2,7 +2,7 @@
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <brand>
         <headerColor>#0070D2</headerColor>
-        <logo>lightningLogo3</logo>
+        <logo>urlHackDemoAppLogo</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
@@ -10,6 +10,7 @@
     <formFactors>Large</formFactors>
     <label>URL Hack Demo</label>
     <navType>Standard</navType>
+    <tabs>URL_Hack_Demo_Setup</tabs>
     <tabs>ltng_UrlHackBase__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>URL_Hack_Demo_UtilityBar</utilityBar>

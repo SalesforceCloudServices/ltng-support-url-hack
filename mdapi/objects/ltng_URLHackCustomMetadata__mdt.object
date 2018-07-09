@@ -6,7 +6,7 @@
     <visibility>Public</visibility>
     <fields>
         <fullName>MetadataValue__c</fullName>
-        <defaultValue>"Value from Custom Metadata"</defaultValue>
+        <defaultValue>&quot;Value from Custom Metadata&quot;</defaultValue>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <inlineHelpText>Value to be used in URL Hack</inlineHelpText>
